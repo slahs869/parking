@@ -1,0 +1,346 @@
+body {}
+
+#div_titulo {
+	position: relative;
+	background-color: yellow;
+	width: 700px;
+	height: 80px;
+	margin-left: 450px;
+	margin-top: 10px;
+	border: 3px solid;
+	display: inline-block;
+	border-radius: 20px;
+	opacity: 0.6;
+	font-size: 60px;
+	font-size-adjust: auto;
+	align-content: center;
+	padding-left: 140px;
+
+}
+
+#div_menu {
+
+	background-color: yellow;
+	width: 240px;
+	height: 700px;
+	position: absolute;
+	border: 3px solid;
+	border-radius: 20px;
+	margin-top: 150px;
+	opacity: 0.6;
+	text-align: center;
+
+
+}
+
+#div_imagen {
+	width: 10px;
+	padding-left: 1500px;
+}
+
+#carro {
+	border: 3px solid rgb(14, 14, 14);
+	border-radius: 20px;
+	margin-top: 10px;
+	width: 180px;
+	height: 100px;
+
+}
+
+#moto {
+
+	border: 3px solid black;
+	border-radius: 20px;
+	margin-top: 10px;
+	width: 180px;
+	height: 100px;
+
+}
+
+#moto:hover {
+
+	border: 3px solid rgb(0, 0, 0);
+	margin: 12px solid;
+	opacity: 0.4;
+
+
+}
+
+#carro:hover {
+	border: 3px solid rgb(2, 2, 2);
+	margin: 12px solid;
+	opacity: 0.4;
+}
+#input_fecha {
+	font-style: bold;
+	width: 250px;
+	height: 40px;
+	margin-top: -100px;
+	font-size: 50px;
+	text-transform: uppercase;
+
+}
+
+#operativo_mensualidades {
+margin-left: 650px;
+margin-top: 100px;
+
+}
+
+#label_fecha {
+
+	font-size: 50px;
+    position: relative;
+    display: flex;
+    margin-left: -200px;
+    margin-top: -232px;
+    margin-bottom: 30px;
+
+}
+#input_fecha {
+	font-style: bold;
+    width: 270px;
+    height: 60px;
+    margin-left: -100px;
+    font-size: 40px;
+    text-transform: uppercase;
+
+}
+#boton_procesar {
+
+	position: absolute;
+    width: 180px;
+    height: 60px;
+    margin-left: 934px;
+    font-size: 20px;
+    margin-top: -39px;
+    border-radius: 20px
+}
+
+#tabla {
+
+	border: 3px solid #000;
+    position: relative;
+    text-align: center;
+    margin-top: 848px;
+    margin-left: -535px;
+    overflow-y: scroll;
+    top: -800px;
+    display: inline-block;
+    width: 500px;
+    height: 372px;
+    width: 517px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#div_proceso_placa {
+	background-color: yellow;
+	width: 1150px;
+	height: 200px;
+	position: relative;
+	margin-left: 300px;
+	margin-top: -200px;
+	border: 3px solid;
+	opacity: 0.6;
+	border-radius: 20px;
+}
+
+#cajon_consulta_placa {
+	background-color: yellow;
+	width: 500px;
+	height: 200px;
+	border-radius: 20px;
+}
+
+
+#div_total {
+	background-color: rgb(255, 255, 255);
+	border: 2px solid;
+	width: 500px;
+	height: 150px;
+	margin-left: 620px;
+	margin-top: -110px;
+	border-radius: 20px;
+	font-size: 60px;
+	display: flex;
+}
+
+
+#label_placa {
+
+	font-size: 50px;
+	position: relative;
+	display: flex;
+	margin-left: 90px;
+
+}
+
+#label_total_pagar {
+
+	font-size: 50px;
+	position: relative;
+	display: flex;
+	margin-left: 65px;
+
+}
+
+#input_placa {
+	font-style: bold;
+	width: 250px;
+	height: 70px;
+	margin-left: 50px;
+	font-size: 50px;
+	text-transform: uppercase;
+
+}
+
+#boton_procesar:hover{	
+	background-color: gray;
+	display: inline;
+}
+
+#label_mensualidades {
+
+	font-size: 40px;
+	margin: 0px auto;
+}
+
+
+#label_recibo {
+	display: flex;
+    font-size: 40px;
+    margin-left: 90px;
+}
+
+
+
+#div_resumen {
+	background-color: yellow;
+	width: 1379px;
+	height: 480px;
+	position: relative;
+	margin-left: 300px;
+	opacity: 0.6;
+	margin-top: 50px;
+	border: 3px solid;
+	border-radius: 20px;
+
+}
+
+#label_total {
+
+	position: relative;
+	margin-left: 54px;
+
+}
+
+#div_historico {
+	background-color: white;
+	border: 2px solid;
+	display: flex;
+	width: 550px;
+	height: 450px;
+	margin-left: 10px;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+#div_totales {
+	background-color: white;
+	width: 502px;
+	height: 449px;
+	position: relative;
+	margin-left: 600px;
+	margin-top: -455px;
+	border: 3px solid;
+	border-radius: 20px;
+}
+
+
+
+#print {
+	font-size: 26px;
+    height: 53px;
+    position: absolute;
+    margin-top: 271px;
+    margin-left: 600px;
+    border-radius: 20px;
+    padding-left: 50px;
+    padding-right: 48px;
+}
+
+#boton_balance {
+	font-size: 20px;
+	height: 50px;
+	position: absolute;
+	margin-top: 201px;
+	margin-left: 600px;
+	border-radius: 20px;
+}
+
+th {
+	width: 20%;
+	border: 2px solid #000;   
+	box-sizing: content-box;
+	font-size: 30px;
+	padding: px;
+
+}
+
+td {
+	width: 22%;
+    border: 2px solid #000;
+    box-sizing: content-box;
+    font-weight: 30px;
+    font-size: 20px;
+
+
+}
+
+#item_menu {
+
+	font-size: 28px;
+	margin-top: 80px;
+	display: flex;
+
+
+
+} 
+
+ul {
+
+	padding: 10px;
+	margin: -20px auto;
+	margin-left: 10px;
+	display: flex;
+	flex-direction: column;
+
+
+}
+
+dt {
+	margin: 0px auto;
+}
