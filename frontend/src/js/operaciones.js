@@ -3,6 +3,9 @@
 const url = 'https://parqueadero2.herokuapp.com/message';
 //const url='http://localhost:3000/message'
 
+console.log('hola')
+
+console.log('hola')
 async function agregar(datos) {
   await fetch(url, {
     method: 'POST', // or 'PUT'
