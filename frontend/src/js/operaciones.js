@@ -4,7 +4,7 @@ const url = 'https://parqueadero2.herokuapp.com/message';
 //const url='http://localhost:3000/message'
 
 console.log('hola')
-
+console.log('hola')
 console.log('hola')
 async function agregar(datos) {
   await fetch(url, {
@@ -81,11 +81,8 @@ let mensajeCarro = ''
 function tarifaMotoFunction() {
   motoPrecio = 1000;
   mensajeMoto = 'Moto  ';
-<<<<<<< HEAD
   carroPrecio = 0;
   mensajeCarro = '';
-=======
->>>>>>> a53a76f535cf0ec8d97de0d4b0ac2611ce29f223
   moto.style.opacity = '0.5';
   // carro.style.opacity='1';
   moto.style.background = 'yellow';
@@ -96,11 +93,8 @@ function tarifaMotoFunction() {
 function tarifaCarroFunction() {
   carroPrecio = 2000;
   mensajeCarro = 'Carro';
-<<<<<<< HEAD
   motoPrecio = 0;
   mensajeMoto = '';
-=======
->>>>>>> a53a76f535cf0ec8d97de0d4b0ac2611ce29f223
   carro.style.background = 'yellow';
   moto.style.background = 'none';
   carro.style.opacity = '0.5';

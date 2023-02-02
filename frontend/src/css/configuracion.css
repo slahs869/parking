@@ -350,3 +350,12 @@ td {
 			top: -25px;
 			opacity: 0.9;
 			}
+
+			.editar {
+				margin-left: 2px;
+				font-size: 18px;
+				width: 75px;
+				height: 31px;
+				margin-bottom: 14px;
+				margin-right: 10px;
+			}

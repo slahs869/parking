@@ -1,3 +1,5 @@
+const url ='https://parqueadero2.herokuapp.com/user';
+
 const container = document.querySelector(".container1");
 const link_tarifa = document.querySelector(".link_tarifa");
 const link_usuarios = document.querySelector(".link_usuarios");
@@ -66,13 +68,15 @@ function formularioUsuarios() {
       container.appendChild(div);// metemos el div en memoria al container del html 
       const containercrear = document.querySelector(".containercrear");
       const boton_crear = document.querySelector(".boton_crear");
-      const boton_editar = document.querySelector(".editar_usuario");
+      const boton_editar = document.querySelector(".boton_editar");
       const boton_eliminar = document.querySelector(".eliminar_usuario");
       boton_crear.addEventListener("click", formularioCrear);
       boton_crear.addEventListener("click", lectura);
+      boton_editar.addEventListener("click",editar_usuario)
 }
 link_usuarios.addEventListener("click", formularioUsuarios)
 link_usuarios.addEventListener("click", lectura)
+
 
 //_____________________________________________________________________________________________________________________
 
@@ -110,7 +114,7 @@ function formularioCrear() {
      // boton_editar.addEventListener("click", lectura);
       boton_ingresar.addEventListener("click", agregarUsuario);
 }
-       async function agregarUsuario() {
+async function agregarUsuario() {
             const input_nombre = document.querySelector(".input_nombre");
             const input_correo = document.querySelector(".input_correo");
             const input_contrasena = document.querySelector(".input_contraseña");
@@ -122,7 +126,8 @@ function formularioCrear() {
                   {
                         name: `${nombre}`,
                         email: `${correo}`,
-                        password: `${contraseña}`
+                        password: `${contraseña}`,
+                        estado:'activo'
       
                   })
                   
@@ -174,11 +179,7 @@ link_impresoras.addEventListener("click", formularioImpresoras)
 
 
 async function leer() {
-      url2 = 'http://localhost:8000/usuarios';
-      url3 = 'http://localhost:8000/home';
-     
-
-      const response = await fetch(url3, {
+      const response = await fetch(url, {
             method: 'GET'
       });
       const data = await response.json();
@@ -188,31 +189,132 @@ async function leer() {
 
 async function lectura() {
       const objeto = await leer()
+      console.log(objeto.body[1]._id)
       // containercrear.innerHTML = ` `;
-      for (let i = 0; i < objeto.length; i++) {
+      for (let i = 0; i < objeto.body.length; i++) {
             //recorro el objeto que me entrego la consulta 
             // creo un elemento HTML y lo asigno a una variable
             const div = document.createElement('TR');
             const sql = `    
             <tr>
-            <td>${objeto[i].id}</td>
-            <td>${objeto[i].name}</td>
-            <td>${objeto[i].email}</td>
-            <td>${objeto[i].password}</td>
-            <td>${objeto[i].estado}</td>
+            <td>${objeto.body[i]._id}</td>
+            <td>${objeto.body[i].name}</td>
+            <td>${objeto.body[i].email}</td>
+            <td>${objeto.body[i].password}</td>
+            <td>${objeto.body[i].estado}</td>
                   `
             // creo una variable donde se va a guardar  el resultado de la consulta sql
             div.innerHTML = sql;
             tabla.appendChild(div);
       }
-      containercrear.setAttribute("contentEditable","true")
+     
+}
+
+async function editar_usuario() {
+      const objeto = await leer()
+      console.log(objeto.body[1]._id)
+   tabla.innerHTML=`<h4>editar</h4>
+   <tr>
+   <th>Id</th>
+   <th>Nombre</th>
+   <th>Correo</th>
+   <th>Contraseña</th>
+   <th>Estado</th>
+   <th>Enviar</th>
+</tr>`
+
+let a=[];
+let b=[];
+let c=[];
+let d=[];
+let e=[];
+let identi=[];
+
+      for (let i = 0; i < objeto.body.length; i++) {
+            //recorro el objeto que me entrego la consulta 
+            // creo un elemento HTML y lo asigno a una variable
+            const div = document.createElement('TR');
+           div.setAttribute("id",`${objeto.body[i]._id}`)
+           //<tr id=>
+           
+            const sql = `    
+            
+
+            <td>${objeto.body[i]._id}</td>
+            <td id="${objeto.body[i].name}">${objeto.body[i].name}</td>
+            <td id="${objeto.body[i].email}">${objeto.body[i].email}</td>
+            <td id="${objeto.body[i].password}">${objeto.body[i].password}</td>
+            <td id="${objeto.body[i].estado}" >${objeto.body[i].estado} </td>
+            <td id=${i}><input class=editar type='checkbox' name='radio'></td>
+                  `
+            // creo una variable donde se va a guardar  el resultado de la consulta sql
+            div.innerHTML = sql;
+            tabla.appendChild(div);
+           
+             a[i]=`${objeto.body[i]._id}`
+             b[i]=`${objeto.body[i].name}`
+             c[i]=`${objeto.body[i].email}`
+             d[i]=`${objeto.body[i].password}`
+             e[i]=`${objeto.body[i].estado}`
+             identi[i]=i
+        
+            
+         
+      }
+    // 
+   tabla.setAttribute("contentEditable","true")
+
+      a.forEach(list=> {
+          let datoscon=document.getElementById(list)
+    
+         datoscon.addEventListener("click", (e)=>{
+           // datoscon.setAttribute("contentEditable","true")
+           let start=datoscon.textContent.trimStart() 
+        
+           let cadena=start.split("  ")
+           let cadenaSin=[]
+          
+          for(let i=0; i<cadena.length; i++){
+            if(cadena[i]!==''  && cadena[i] !=='\n'){
+
+               cadenaSin.push(cadena[i])
+            }
+          } 
+       //console.log(cadenaSin)
+
+       nuevaCadena=[]
+          cadenaSin.forEach(cadena=>{
+           let finali= cadena.replace('\n', '')
+           nuevaCadena.push(finali)
+          
+          })
+           console.log(nuevaCadena)
+       
+           identi.forEach(id=>{
+            let enviarCheck=document.getElementById(id)
+            enviarCheck.addEventListener("click", (e)=>{
+                let ok=e.target.value;
+                if(ok=='on' && nuevaCadena !==''){
+                  agregarUnDato(nuevaCadena[0],{
+                        name:`${nuevaCadena[1]}`,
+                        email:`${nuevaCadena[2]}`,
+                        password:`${nuevaCadena[3]}`,
+                        estado:`${nuevaCadena[4]}`,
+                  }) 
+                }
+            })
+            console.log(enviarCheck)
+           })
+         })
+      });
+      
 
 }
 
 
 
 async function agregar(datos) {
-      await fetch(url3, {
+      await fetch(url, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(datos), // data can be `string` or {object}!
             headers: {
@@ -224,6 +326,20 @@ async function agregar(datos) {
 
 }
 
+async function agregarUnDato(id, datos) {
+      await fetch(`${url}/${id}`, {
+    
+        method: 'PATCH', // or 'PUT'
+        body: JSON.stringify(datos), // data can be `string` or {object}!
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response));
+    
+    }
+    
 
 
 
