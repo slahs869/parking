@@ -69,10 +69,11 @@ function formularioUsuarios() {
       const containercrear = document.querySelector(".containercrear");
       const boton_crear = document.querySelector(".boton_crear");
       const boton_editar = document.querySelector(".boton_editar");
-      const boton_eliminar = document.querySelector(".eliminar_usuario");
+      const boton_eliminar = document.querySelector(".boton_eliminar");
       boton_crear.addEventListener("click", formularioCrear);
       boton_crear.addEventListener("click", lectura);
       boton_editar.addEventListener("click",editar_usuario)
+      boton_eliminar.addEventListener("click", eliminar)
 }
 link_usuarios.addEventListener("click", formularioUsuarios)
 link_usuarios.addEventListener("click", lectura)
@@ -143,7 +144,204 @@ async function agregarUsuario() {
 
       }
 
+      async function editar_usuario() {
+            const objeto = await leer()
+            console.log(objeto.body[1]._id)
+         tabla.innerHTML=`<h4>editar</h4>
+         <tr>
+         <th>Id</th>
+         <th>Nombre</th>
+         <th>Correo</th>
+         <th>Contraseña</th>
+         <th>Estado</th>
+         <th>Enviar</th>
+      </tr>`
+      
+      let a=[];
+      let b=[];
+      let c=[];
+      let d=[];
+      let e=[];
+      let identi=[];
+      
+            for (let i = 0; i < objeto.body.length; i++) {
+                  //recorro el objeto que me entrego la consulta 
+                  // creo un elemento HTML y lo asigno a una variable
+                  const div = document.createElement('TR');
+                 div.setAttribute("id",`${objeto.body[i]._id}`)
+                 //<tr id=>
+                 
+                  const sql = `    
+                  
+      
+                  <td>${objeto.body[i]._id}</td>
+                  <td id="${objeto.body[i].name}">${objeto.body[i].name}</td>
+                  <td id="${objeto.body[i].email}">${objeto.body[i].email}</td>
+                  <td id="${objeto.body[i].password}">${objeto.body[i].password}</td>
+                  <td id="${objeto.body[i].estado}" >${objeto.body[i].estado} </td>
+                  <td id=${i}><input class=editar type='checkbox' name='radio'></td>
+                        `
+                  // creo una variable donde se va a guardar  el resultado de la consulta sql
+                  div.innerHTML = sql;
+                  tabla.appendChild(div);
+                 
+                   a[i]=`${objeto.body[i]._id}`
+                   b[i]=`${objeto.body[i].name}`
+                   c[i]=`${objeto.body[i].email}`
+                   d[i]=`${objeto.body[i].password}`
+                   e[i]=`${objeto.body[i].estado}`
+                   identi[i]=i
+              
+                  
+               
+            }
+          // 
+         tabla.setAttribute("contentEditable","true")
+      
+            a.forEach(list=> {
+                let datoscon=document.getElementById(list)
+          
+               datoscon.addEventListener("click", (e)=>{
+                 // datoscon.setAttribute("contentEditable","true")
+                 let start=datoscon.textContent.trimStart() 
+              
+                 let cadena=start.split("  ")
+                 let cadenaSin=[]
+                
+                for(let i=0; i<cadena.length; i++){
+                  if(cadena[i]!==''  && cadena[i] !=='\n'){
+      
+                     cadenaSin.push(cadena[i])
+                  }
+                } 
+             //console.log(cadenaSin)
+      
+             nuevaCadena=[]
+                cadenaSin.forEach(cadena=>{
+                 let finali= cadena.replace('\n', '')
+                 nuevaCadena.push(finali)
+                
+                })
+                 console.log(nuevaCadena)
+             
+                 identi.forEach(id=>{
+                  let enviarCheck=document.getElementById(id)
+                  enviarCheck.addEventListener("click", (e)=>{
+                      let ok=e.target.value;
+                      if(ok=='on' && nuevaCadena !==''){
+                        agregarUnDato(nuevaCadena[0],{
+                              name:`${nuevaCadena[1]}`,
+                              email:`${nuevaCadena[2]}`,
+                              password:`${nuevaCadena[3]}`,
+                              estado:`${nuevaCadena[4]}`,
+                        }) 
+                      }
+                  })
+                  console.log(enviarCheck)
+                 })
+               })
+            });
             
+      
+      }
+      
+async function eliminar(){
+      const objeto = await leer()
+      console.log(objeto.body[1]._id)
+   tabla.innerHTML=`<h4>click en la colunma hasta que seleccione, luego click en id para eliminar </h4>
+   <tr>
+  <!-- <th>check</th>  -->
+   <th>Id</th>
+   <th>Nombre</th>
+   <th>Correo</th>
+   <th>Contraseña</th>
+   <th>Estado</th>
+
+</tr>`
+
+let a=[];
+let b=[];
+let c=[];
+let d=[];
+let e=[];
+let identi=[];
+
+      for (let i = 0; i < objeto.body.length; i++) {
+            //recorro el objeto que me entrego la consulta 
+            // creo un elemento HTML y lo asigno a una variable
+            const div = document.createElement('TR');
+         //   tabla.innerHTML=''
+           div.setAttribute("id",`${i}`)
+           //<tr id=>
+           
+            const sql = `    
+           <!-- <td><input id="${objeto.body[i]._id}+z" class=editar type='checkbox' name='radio'></td> -->
+            <td id="${objeto.body[i]._id}">${objeto.body[i]._id}</td>
+            <td id="${objeto.body[i].name}">${objeto.body[i].name}</td>
+            <td id="${objeto.body[i].email}">${objeto.body[i].email}</td>
+            <td id="${objeto.body[i].password}">${objeto.body[i].password}</td>
+            <td id="${objeto.body[i].estado}" >${objeto.body[i].estado} </td>
+          
+                  `
+            // creo una variable donde se va a guardar  el resultado de la consulta sql
+            div.innerHTML = sql;
+            tabla.appendChild(div);
+           
+             a[i]=`${objeto.body[i]._id}`
+             b[i]=`${objeto.body[i]._id}+z`
+             c[i]=`${objeto.body[i].email}`
+             d[i]=`${objeto.body[i].password}`
+             e[i]=`${objeto.body[i].estado}`
+             identi[i]=i
+      }
+     let columna = true;
+      let resalto;
+      identi.forEach( list => {
+            let datos = document.getElementById(list)
+            console.log(datos)
+            datos.addEventListener("click",()=>{
+                  columna=!columna
+            if(columna == true){
+                  datos.setAttribute("class","color") 
+                  resalto=true
+                 
+                 
+            }
+            if(columna === false){
+                  datos.setAttribute("class","vacio") 
+                  resalto=false
+            }
+
+            })
+      })
+     a.forEach(  list=> {
+            let datoscon=document.getElementById(list)
+      
+           datoscon.addEventListener("click",deleteOne)
+           
+         console.log(datoscon)
+})
+
+
+async function deleteOne(e){
+      // datoscon.setAttribute("contentEditable","true")
+   
+  
+  
+    let id=e.target
+    let dato = id.innerHTML
+      console.log(dato)
+      if(resalto==true){
+          let confirmacion=  confirm("¿Deseas elimnar el usuario?")
+          if(confirmacion==true){
+           borrar(dato)
+           tabla.innerHTML=''
+           eliminar()
+          }
+      }
+}
+
+}
 
 //_______________________________________________________________________________________________________________
 
@@ -174,6 +372,8 @@ function formularioImpresoras() {
       // metemos el div en memoria al container del html       
 
 }
+
+
 
 link_impresoras.addEventListener("click", formularioImpresoras)
 
@@ -210,107 +410,6 @@ async function lectura() {
      
 }
 
-async function editar_usuario() {
-      const objeto = await leer()
-      console.log(objeto.body[1]._id)
-   tabla.innerHTML=`<h4>editar</h4>
-   <tr>
-   <th>Id</th>
-   <th>Nombre</th>
-   <th>Correo</th>
-   <th>Contraseña</th>
-   <th>Estado</th>
-   <th>Enviar</th>
-</tr>`
-
-let a=[];
-let b=[];
-let c=[];
-let d=[];
-let e=[];
-let identi=[];
-
-      for (let i = 0; i < objeto.body.length; i++) {
-            //recorro el objeto que me entrego la consulta 
-            // creo un elemento HTML y lo asigno a una variable
-            const div = document.createElement('TR');
-           div.setAttribute("id",`${objeto.body[i]._id}`)
-           //<tr id=>
-           
-            const sql = `    
-            
-
-            <td>${objeto.body[i]._id}</td>
-            <td id="${objeto.body[i].name}">${objeto.body[i].name}</td>
-            <td id="${objeto.body[i].email}">${objeto.body[i].email}</td>
-            <td id="${objeto.body[i].password}">${objeto.body[i].password}</td>
-            <td id="${objeto.body[i].estado}" >${objeto.body[i].estado} </td>
-            <td id=${i}><input class=editar type='checkbox' name='radio'></td>
-                  `
-            // creo una variable donde se va a guardar  el resultado de la consulta sql
-            div.innerHTML = sql;
-            tabla.appendChild(div);
-           
-             a[i]=`${objeto.body[i]._id}`
-             b[i]=`${objeto.body[i].name}`
-             c[i]=`${objeto.body[i].email}`
-             d[i]=`${objeto.body[i].password}`
-             e[i]=`${objeto.body[i].estado}`
-             identi[i]=i
-        
-            
-         
-      }
-    // 
-   tabla.setAttribute("contentEditable","true")
-
-      a.forEach(list=> {
-          let datoscon=document.getElementById(list)
-    
-         datoscon.addEventListener("click", (e)=>{
-           // datoscon.setAttribute("contentEditable","true")
-           let start=datoscon.textContent.trimStart() 
-        
-           let cadena=start.split("  ")
-           let cadenaSin=[]
-          
-          for(let i=0; i<cadena.length; i++){
-            if(cadena[i]!==''  && cadena[i] !=='\n'){
-
-               cadenaSin.push(cadena[i])
-            }
-          } 
-       //console.log(cadenaSin)
-
-       nuevaCadena=[]
-          cadenaSin.forEach(cadena=>{
-           let finali= cadena.replace('\n', '')
-           nuevaCadena.push(finali)
-          
-          })
-           console.log(nuevaCadena)
-       
-           identi.forEach(id=>{
-            let enviarCheck=document.getElementById(id)
-            enviarCheck.addEventListener("click", (e)=>{
-                let ok=e.target.value;
-                if(ok=='on' && nuevaCadena !==''){
-                  agregarUnDato(nuevaCadena[0],{
-                        name:`${nuevaCadena[1]}`,
-                        email:`${nuevaCadena[2]}`,
-                        password:`${nuevaCadena[3]}`,
-                        estado:`${nuevaCadena[4]}`,
-                  }) 
-                }
-            })
-            console.log(enviarCheck)
-           })
-         })
-      });
-      
-
-}
-
 
 
 async function agregar(datos) {
@@ -340,8 +439,15 @@ async function agregarUnDato(id, datos) {
     
     }
     
-
-
+    async function borrar(id) {
+      const response = await fetch(`${url}/${id}`, {
+        method: 'DELETE',
+      });
+      const data = await response.json();
+    
+      return data;
+    }
+    
 
 
 
