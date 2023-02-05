@@ -334,10 +334,18 @@ async function deleteOne(e){
       if(resalto==true){
           let confirmacion=  confirm("¿Deseas elimnar el usuario?")
           if(confirmacion==true){
+<<<<<<< HEAD
           await borrar(dato)
            tabla.innerHTML=''
           await eliminar()
+=======
+             
+            await borrar(dato)
+            tabla.innerHTML=''
+           await eliminar()
+>>>>>>> 60c6d60cf18d7565abccc5efc3d0cd19c37fba5a
           }
+          
       }
 }
 

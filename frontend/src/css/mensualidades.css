@@ -132,30 +132,6 @@ margin-top: 100px;
     width: 517px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #div_proceso_placa {
 	background-color: yellow;
 	width: 1150px;
@@ -325,6 +301,7 @@ td {
 	font-size: 28px;
 	margin-top: 80px;
 	display: flex;
+	align-items: center;
 
 
 
