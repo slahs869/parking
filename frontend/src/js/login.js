@@ -14,14 +14,6 @@ function validarUsuario () {
 button_ingresar.addEventListener("click", lectura)
 
 
-
-
-
-
-
-
-
-
 async function leer() {
     const response = await fetch(url, {
           method: 'GET'
@@ -57,7 +49,7 @@ async function lectura() {
         <label id="label_id">Contraseña:</label>
         <input class="input_password" type="password">
         <button class="button_ingresar"id="button_ingresar"> Ingresar</button>`;
-        button_ingresar.addEventListener("click", lectura)
+        button_ingresar.addEventListener("click", lectura) 
     }
 }
 }
