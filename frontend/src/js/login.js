@@ -3,7 +3,8 @@ const url ='https://parqueadero2.herokuapp.com/user';
 button_ingresar = document.querySelector(".button_ingresar");
 input_nombre = document.querySelector(".input_nombre");
 input_password = document.querySelector(".input_password");
-container = document.querySelector(".container_login")
+container = document.querySelector(".container_login");
+container_mensaje = document.querySelector(".container_mensaje");
 
 
 
@@ -42,14 +43,14 @@ async function lectura() {
     } else {
         
         console.error("no validado");
-        const div = document.createElement("DIV") // crea un div en memoria 
-        container.innerHTML = ` <label id="label_titulo">Login</label>
-        <label id="label_id">Identificion:</label>
-        <input class="input_nombre" type="text">
-        <label id="label_id">Contraseña:</label>
-        <input class="input_password" type="password">
-        <button class="button_ingresar"id="button_ingresar"> Ingresar</button>`;
-        button_ingresar.addEventListener("click", lectura) 
+         
+        container_mensaje.innerHTML = ` 
+        <p>ERROR DE USUARIO Y/O CONTRASEÑA</p>`;
+       
+
+        }
+        
     }
+     
 }
-}
+button_ingresar.addEventListener("click", lectura)

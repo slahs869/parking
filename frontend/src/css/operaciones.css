@@ -50,10 +50,10 @@ border-radius: 20px;
 margin-top: 150px;
 opacity: 0.6;
 text-align: center;
-
-
 }
-
+dt {
+    margin: 150px auto;
+}
 #div_imagen {
 width: 10px;
 padding-left: 1500px;
@@ -330,14 +330,12 @@ margin-top: 80px;
 display: flex;
 transition: 0.3s;
 
-
-
-
-
 } 
+
 a {
 text-transform: none;
 }
+
 #item_menu:hover {
 
 font-size: 32px;
@@ -349,14 +347,18 @@ display: flex;
 
 } 
 
-ul {
+#ul_menu {
 
-padding: 10px;
-margin: -20px auto;
-margin-left: 10px;
-display: flex;
-flex-direction: column;
-
+	padding: 10px;
+	margin: -20px auto;
+	margin-left: 10px;
+	display: flex;
+	flex-direction: column;
 
 }
 
+dt{
+   
+	margin: 0px auto;
+    
+}
