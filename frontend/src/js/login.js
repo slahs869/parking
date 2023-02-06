@@ -4,7 +4,7 @@ button_ingresar = document.querySelector(".button_ingresar");
 input_nombre = document.querySelector(".input_nombre");
 input_password = document.querySelector(".input_password");
 container = document.querySelector(".container_login");
-container_mensaje = document.querySelector(".container_mensaje");
+errorColor = document.querySelector(".errorColor");
 
 
 
@@ -35,7 +35,8 @@ async function lectura() {
    
 
     if(objeto.body[i].name == input_nombre.value && objeto.body[i].password == input_password.value) {
-        window.open('operaciones.html',  "_self");
+        window.open('operaciones.html');
+        window.close('login.html')
         console.log(objeto.body[i]._id)
         const div = document.createElement("DIV") // crea un div en memoria 
         container.innerHTML = `Usuario logeado `;
@@ -44,8 +45,7 @@ async function lectura() {
         
         console.error("no validado");
          
-        container_mensaje.innerHTML = ` 
-        <p>ERROR DE USUARIO Y/O CONTRASEÑA</p>`;
+       errorColor.setAttribute("class", "on")
        
 
         }
