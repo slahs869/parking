@@ -18,6 +18,17 @@ body {}
 
 }
 
+#logo {
+	display: flex;
+	position: absolute;
+	width: 230px;
+	height: 120px;
+	margin-left: 30px;
+	margin-top: -96px;
+	border: 1px solid;
+	border-radius: 20px;
+}
+
 #div_menu {
 
 	background-color: yellow;
@@ -71,6 +82,7 @@ body {}
 	margin: 12px solid;
 	opacity: 0.4;
 }
+
 #input_fecha {
 	font-style: bold;
 	width: 250px;
@@ -82,54 +94,56 @@ body {}
 }
 
 #operativo_mensualidades {
-margin-left: 650px;
-margin-top: 100px;
+	margin-left: 650px;
+	margin-top: 100px;
 
 }
 
 #label_fecha {
 
 	font-size: 50px;
-    position: relative;
-    display: flex;
-    margin-left: -200px;
-    margin-top: -232px;
-    margin-bottom: 30px;
+	position: relative;
+	display: flex;
+	margin-left: -200px;
+	margin-top: -232px;
+	margin-bottom: 30px;
 
 }
+
 #input_fecha {
 	font-style: bold;
-    width: 270px;
-    height: 60px;
-    margin-left: -100px;
-    font-size: 40px;
-    text-transform: uppercase;
+	width: 270px;
+	height: 60px;
+	margin-left: -100px;
+	font-size: 40px;
+	text-transform: uppercase;
 
 }
+
 #boton_procesar {
 
 	position: absolute;
-    width: 180px;
-    height: 60px;
-    margin-left: 934px;
-    font-size: 20px;
-    margin-top: -39px;
-    border-radius: 20px
+	width: 180px;
+	height: 60px;
+	margin-left: 934px;
+	font-size: 20px;
+	margin-top: -39px;
+	border-radius: 20px
 }
 
 #tabla {
 
 	border: 3px solid #000;
-    position: relative;
-    text-align: center;
-    margin-top: 848px;
-    margin-left: -535px;
-    overflow-y: scroll;
-    top: -800px;
-    display: inline-block;
-    width: 500px;
-    height: 372px;
-    width: 517px;
+	position: relative;
+	text-align: center;
+	margin-top: 848px;
+	margin-left: -535px;
+	overflow-y: scroll;
+	top: -800px;
+	display: inline-block;
+	width: 500px;
+	height: 372px;
+	width: 517px;
 }
 
 #div_proceso_placa {
@@ -193,7 +207,7 @@ margin-top: 100px;
 
 }
 
-#boton_procesar:hover{	
+#boton_procesar:hover {
 	background-color: gray;
 	display: inline;
 }
@@ -207,8 +221,8 @@ margin-top: 100px;
 
 #label_recibo {
 	display: flex;
-    font-size: 40px;
-    margin-left: 90px;
+	font-size: 40px;
+	margin-left: 90px;
 }
 
 
@@ -259,13 +273,13 @@ margin-top: 100px;
 
 #print {
 	font-size: 26px;
-    height: 53px;
-    position: absolute;
-    margin-top: 271px;
-    margin-left: 600px;
-    border-radius: 20px;
-    padding-left: 50px;
-    padding-right: 48px;
+	height: 53px;
+	position: absolute;
+	margin-top: 271px;
+	margin-left: 600px;
+	border-radius: 20px;
+	padding-left: 50px;
+	padding-right: 48px;
 }
 
 #boton_balance {
@@ -279,7 +293,7 @@ margin-top: 100px;
 
 th {
 	width: 20%;
-	border: 2px solid #000;   
+	border: 2px solid #000;
 	box-sizing: content-box;
 	font-size: 30px;
 	padding: px;
@@ -288,10 +302,10 @@ th {
 
 td {
 	width: 22%;
-    border: 2px solid #000;
-    box-sizing: content-box;
-    font-weight: 30px;
-    font-size: 20px;
+	border: 2px solid #000;
+	box-sizing: content-box;
+	font-weight: 30px;
+	font-size: 20px;
 
 
 }
@@ -305,7 +319,7 @@ td {
 
 
 
-} 
+}
 
 ul {
 

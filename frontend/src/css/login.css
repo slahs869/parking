@@ -75,7 +75,7 @@ body {
 
 #button_ingresar {
     font-size: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: 0.5s;
     margin-left: 150px;
  
@@ -87,6 +87,16 @@ body {
 background-color: rgb(173, 170, 165);
 
 }
+input {
+
+border-radius: 10px;
+border: 1px solid;
+width: 180px;
+height: 30px;
+font-size: 20px;
+
+
+}
 input:hover {
 
     background-color: rgb(228, 225, 225);
@@ -96,7 +106,6 @@ label{
 }
 
 #div_logo {
-
     margin-top: -200px;
 }
 
