@@ -19,6 +19,16 @@ body {
 	padding-left: 70px;
 	align-content: center;
 }
+#logo {
+	display: flex;
+	position: absolute;
+	width: 230px;
+	height: 120px;
+	margin-left: 30px;
+	margin-top: -96px;
+	border: 1px solid;
+	border-radius: 20px;
+}
 
 .label_informes {
 	font-size: 70px;

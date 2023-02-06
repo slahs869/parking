@@ -46,7 +46,7 @@ body {
 
 #button_ingresar {
     font-size: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: 0.5s;
     margin-left: 150px;
     margin-top: 30px;
@@ -58,6 +58,16 @@ body {
 background-color: rgb(173, 170, 165);
 
 }
+input {
+
+border-radius: 10px;
+border: 1px solid;
+width: 180px;
+height: 30px;
+font-size: 20px;
+
+
+}
 input:hover {
 
     background-color: rgb(228, 225, 225);
@@ -65,7 +75,7 @@ input:hover {
 
 #div_logo {
     position: relative;
-    display:inline;
+    display:inline-block;
     width: 500px;
     height: 400px;
     margin-top: -200px;
@@ -75,6 +85,7 @@ input:hover {
     width: 400px;
     height: 400px;
     margin-top: 200px;
+    border-top-left-radius: 10px 10px;
     
 }
 .container_mensaje {
@@ -85,6 +96,6 @@ input:hover {
     display: flex;
     position: relative;
     margin-top: 340px;
-    margin-left: 50px;
+    margin-left: 51px;
      
 }

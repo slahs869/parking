@@ -35,7 +35,8 @@ async function lectura() {
    
 
     if(objeto.body[i].name == input_nombre.value && objeto.body[i].password == input_password.value) {
-        window.open('operaciones.html',  "_self");
+        window.open('operaciones.html');
+        window.close('login.html')
         console.log(objeto.body[i]._id)
         const div = document.createElement("DIV") // crea un div en memoria 
         container.innerHTML = `Usuario logeado `;
