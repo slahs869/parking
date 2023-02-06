@@ -3,44 +3,73 @@ body {
     background-repeat: no-repeat, repeat;
     background-position: center;
     background-size: cover;
-   
 }
 
 
 #div_principal {
-
+ 
     display: flex;
     justify-content: center;
-    padding: 80px;
-
-   
+    padding-top: 80px;
 }
 #div_contenedor {
     position: absolute;
     display: inline;
     background-color: yellow;
     margin-left: 400px;
-    width: 450px;
+    width: 400px;
     height: 400px;
- 
+    border-top-right-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
 
     
 }
 
 #label_titulo {
-    
+    padding-top: 30px;
     display: flex;
-    margin-left: 160px;
-    font-size: 30px;
-    margin-bottom: 50px;
-    margin-top: 20px;
+    justify-content: center;
     
+}
+#label_identi {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+#label_input {
+  
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    
+}
+#label_contrasena {
+  
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    
+}
+#error {
+
+    display: flex;
+    justify-content: center;
+    
+}
+
+.errorColor{
+    color: yellow;
+}
+.on{
+    color:black
 }
 
 #label_id {
     margin-left: 30px;
     display: inline-flex;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-size: 30px;
 }
 
@@ -49,7 +78,7 @@ body {
     border-radius: 10px;
     transition: 0.5s;
     margin-left: 150px;
-    margin-top: 30px;
+ 
     width: 100px;
     height: 40px;
     border: 1px solid;
@@ -72,12 +101,11 @@ input:hover {
 
     background-color: rgb(228, 225, 225);
 }
+label{
+    font-size: 20px;
+}
 
 #div_logo {
-    position: relative;
-    display:inline-block;
-    width: 500px;
-    height: 400px;
     margin-top: -200px;
 }
 
@@ -85,10 +113,12 @@ input:hover {
     width: 400px;
     height: 400px;
     margin-top: 200px;
-    border-top-left-radius: 10px 10px;
+    margin-right: 400px;
+    border-top-left-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
     
 }
-.container_mensaje {
+.container_mensajes {
     
     width: 300px;
     height: 20px;
@@ -96,6 +126,8 @@ input:hover {
     display: flex;
     position: relative;
     margin-top: 340px;
-    margin-left: 51px;
+    margin-left: 50px;
+    
      
 }
+

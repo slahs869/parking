@@ -4,7 +4,7 @@ button_ingresar = document.querySelector(".button_ingresar");
 input_nombre = document.querySelector(".input_nombre");
 input_password = document.querySelector(".input_password");
 container = document.querySelector(".container_login");
-container_mensaje = document.querySelector(".container_mensaje");
+errorColor = document.querySelector(".errorColor");
 
 
 
@@ -45,8 +45,7 @@ async function lectura() {
         
         console.error("no validado");
          
-        container_mensaje.innerHTML = ` 
-        <p>ERROR DE USUARIO Y/O CONTRASEÑA</p>`;
+       errorColor.setAttribute("class", "on")
        
 
         }
