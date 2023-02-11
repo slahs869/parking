@@ -40,14 +40,15 @@ cursor: pointer;
 
 
     background-color: yellow;
-    width: 200px;
-    height: 100px;
+    width: 250px;
+    height: 110px;
     display: flex;
     position: fixed;
-    margin-left: 1450px;
+    margin-left: 1350px;
     border: 2px solid;
     border-radius: 10px;
-    padding: 10px
+    padding: 10px;
+    opacity: 0.8;
  }
 
 

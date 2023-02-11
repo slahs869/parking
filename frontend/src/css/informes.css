@@ -1,7 +1,7 @@
 body {
 
-	width: 10000px;
-	height: 1000px;
+	width: 100px;
+	height: 100px;
 }
 
 #div_titulo {
@@ -30,6 +30,22 @@ body {
 	border-radius: 20px;
 }
 
+.container_login {
+
+
+    background-color: yellow;
+    width: 230px;
+    height: 120px;
+    display: flex;
+    position: fixed;
+    margin-left: 1350px;
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    opacity: 0.8;
+ }
+
+ 
 .label_informes {
 	font-size: 70px;
 	margin-left: 140px;
@@ -93,6 +109,12 @@ td {
 	text-transform: uppercase;
 	margin-top: 8px;
 
+}
+
+#div_resumen {
+
+	background-color: aqua;
+	border: 1px solid;
 }
 
 #buton_buscar {
