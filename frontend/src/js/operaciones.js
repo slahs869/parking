@@ -78,6 +78,7 @@ const btnProcesar = document.querySelector(".buttonSalida")
 const div_totales = document.querySelector(".div_totales")
 const caja_total = document.querySelector(".caja_total")
 const moto = document.querySelector(".moto");
+input.minlength="6";
 
 const carro = document.querySelector(".carro")
 const botonImp = document.querySelector(".mostrarImp");

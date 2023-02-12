@@ -5,6 +5,7 @@ const container = document.querySelector(".container1");
 const link_tarifa = document.querySelector(".link_tarifa");
 const link_usuarios = document.querySelector(".link_usuarios");
 const link_impresoras = document.querySelector(".link_impresoras");
+const link_factura = document.querySelector(".link_factura");
 const boton = document.querySelector(".botones");
 // aca lo llame
 
@@ -171,7 +172,7 @@ async function agregarUsuario() {
                   })
                   
          
-            const div = document.createElement("DIV") // crea un div en memoria 
+      const div = document.createElement("DIV") // crea un div en memoria 
       container.innerHTML = ` `;
       container.appendChild(div);
       let variableError = `   <div>
@@ -394,11 +395,11 @@ function formularioImpresoras() {
                            
              <h2> Menu Impresoras: </h2>
             <form>
-            <h3>Seleccione Impresora</h3>
+            <h3>Seleccione Impresora:</h3>
             <select> 
-                  <option>Impresora 1</option>
-                  <option>Impresora 2</option>
-                  <option>Impresora 3</option>            
+                  <option>Epson TM 20II</option>
+                  <option>Generic Only Text</option>
+                  <option>Print to PDF</option>            
             </select>
             <button> GUARDAR</button>
             <input type="checkbox">
@@ -411,6 +412,49 @@ function formularioImpresoras() {
       // metemos el div en memoria al container del html       
 
 }
+
+function infoFactura() {
+
+      const div = document.createElement("DIV") // crea un div en memoria 
+      container.innerHTML = ` `;
+      container.appendChild(div);
+      let variableError = `<style>
+      
+#label_moto{
+
+      margin-left:180px;
+}
+      </style>
+      <h2> Informacion Parqueadero </h2>
+      <label>Nombre:</label>
+      <input type="text">
+      <label>Nit:</label>
+      <input type="text">
+      <label>Direccion:</label>
+      <input type="text"><br>
+      <label>Telefono:</label>
+      <input type="text"><BR> <br>
+      <label>CAPACIDAD:</label>
+      <label>Carros:</label>
+      <input type="text"><BR>
+      <label id="label_moto">Motos:</label>
+      <input type="text">
+      
+      
+      
+      
+      
+      `
+      div.innerHTML = variableError;            // metemos el mensaje al div que creamos
+      container.appendChild(div);
+
+
+}
+link_factura.addEventListener("click", infoFactura)
+
+
+
+
 
 
 
