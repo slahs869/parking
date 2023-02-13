@@ -18,8 +18,8 @@ async function formularioTarifas() {
                     
           <h2> Defina la tarifa para: </h2> 
           <h3>AUTOMOVIL:</h3>
-          <input type="text" class="iCarro"> 
-          <button class="guardar_carro">Guardar</button><br><br>
+          <input type="text" class="iCarro"><br> 
+          
           <h3>MOTO: </h3>
           <input type="text" class="input_tarifa iMoto">
           <button id="boton_guardar" class="guardar_Moto ">Guardar</button>
@@ -36,8 +36,8 @@ async function formularioTarifas() {
       botonMoto=document.querySelector('.guardar_Moto')
       inputMoto=document.querySelector('.iMoto')
 
-      botonCarro.addEventListener("click", carro)
       botonMoto.addEventListener("click", moto)
+      botonMoto.addEventListener("click", carro)
       let MostarPrecio=await leerPrecio()
      let tarifas=document.querySelector('.containertarifas')
      tarifas.innerHTML=`<h3>Precio actual:</h3>

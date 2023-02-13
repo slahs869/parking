@@ -583,12 +583,13 @@ function imprSelec(datos) {//nombre) {
             <h2 id="h2_titulo">PARQUEADERO EL MONO</h2>
             <h2 id="h2_recibo">Nit:  </h2>
             <h2 id="h2_recibo">Direccion:</h2>
-            <h2 id="h2_recibof">Recibo #:${datos.message}</h2>
-            <h2 id="h2_recibo">PLACA : ${datos.placa}</h2>
-            <h2 id="h2_recibo">Entrada: ${horaMostrar}</h2>
+            <h2 id="h2_recibof">Recibo #  ${datos.message}</h2>
+            <h2 id="h2_recibo">CAJERO: ${window.localStorage.getItem("usuario")}</h2><br>
+            <h2 id="h2_recibo">Placa: ${datos.placa}</h2>
+            <h2 id="h2_recibo">Hora Entrada: ${horaMostrar}</h2>
             
             <a id="a2_pie">Conserve este tiquete para retirar su vehiculo o motocicleta sera requerido,
-            en caso de perdida dejar copia de matricula y cedela, recuerde dejar la moto sin seguro, horario de atencion de 
+            en caso de perdida debe dejar copia de la matricula del vehiculo y copia de cedula, recuerde dejar la moto sin seguro, horario de atencion de L a V de 
             8 am a 8 pm </a2>
             </div>
             <h2>--------------------------</h2>
@@ -636,10 +637,11 @@ function facturaSalida(datos) {//nombre) {
     
     </style>
     
-                <h2 id="h2_titulo">BIENVENIDO</h2>
+                
                 <h2 id="h2_titulo">PARQUEADERO PEPE</h2>
                 <h2 id="h2_titulo">DIRECCION:CRA 12 # 10 - 12</h2>
-                <h2 id="h2_recibo">FACTURA#:${datos.id}</h2>
+                <h2 id="h2_recibo">FACTURA # ${datos.id}</h2>
+                <h2 id="h2_recibo">CAJERO:${window.localStorage.getItem("usuario")}</h2><br>
                 <h2 id="h2_recibo">PLACA: ${datos.placa}</h2>
                 <h2 id="h2_recibo">Valor Hora: ${datos.precio}
                 <h2 id="h2_recibo">Hora Entrada: ${datos.horaEntrada}</h2>

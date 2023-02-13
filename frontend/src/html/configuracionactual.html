@@ -11,13 +11,11 @@
 
 <body>
 
-	<div class="cargar">
+	<div class="cargar"></div>
 
-	</div>
 
 	<script>
-
-		let html=` <div class="div_menu" id="div_menu">
+		let html=` 	<div class="div_menu" id="div_menu">
 		<ul id="ul_menu">
 			<dt><a href="operaciones.html" id="item_menu">Inicio</a></dt>
 			<dt><a href="informes.html" id="item_menu">Informes</a></dt>
@@ -25,7 +23,8 @@
 			<dt><a href="configuracion.html" id="item_menu">Configuracion</a></dt>
 			<dt><a href="https://wa.link/1qgsou" id="item_menu">Soporte Tecnico</a></dt>
 		</ul>
-	</div>
+					</div>
+
 
 	<div class="div_titulo" id="div_titulo">
 		CONFIGURACION
@@ -64,8 +63,8 @@
                     
 					<h2> Defina la tarifa para: </h2> 
 					<h3>AUTOMOVIL:</h3>
-					<input type="text" class="iCarro"><br> 
-					
+					<input type="text" class="iCarro"> 
+					<button class="guardar_carro">Guardar</button><br><br>
 					<h3>MOTO: </h3>
 					<input type="text" class="input_tarifa iMoto">
 					<button id="boton_guardar" class="guardar_Moto ">Guardar</button>
@@ -77,42 +76,7 @@
 				
 			  
 	</div>
-
-        
-`
-const cargar=document.querySelector(".cargar")
-
-try{
-	let datos=window.localStorage.getItem("activo")
-	
-	const div=document.createElement("DIV")
-	if(datos == 'activo'){
-		div.innerHTML=html
-		cargar.appendChild(div)
-	}else{
-		cargar.innerHTML=`  <div id="div_principal">
-    <div id="div_logo">
-        <img  src="../img/logo.png" class="logoempresa"  id="logoE">    
-    </div>
-
-
-    <div class="container_login" id="div_contenedor">
-
-        <h1 id="label_titulo">No estas autorizado</h1>
-
-        
-    
-    </div>
-
- 
-</div>`
-	}
-} catch(e){
-	console.log('')
-}
-
-
-
+` 
 	</script>
 	
 
