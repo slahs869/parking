@@ -1,0 +1,38 @@
+
+td {
+    width:auto;
+    border: 2px solid #000;
+    box-sizing: content-box;
+    font-weight: 30px;
+    font-size: 20px;
+    
+    
+    }
+
+th {
+    width:auto;
+    border: 2px solid #000;
+    box-sizing: content-box;
+    font-weight: 30px;
+     font-size: 20px;
+        
+        
+    }
+table {
+    width:auto;
+    border: 2px solid #000;
+    box-sizing: content-box;
+    font-weight: 30px;
+    font-size: 20px;
+    }
+
+h4 {
+   
+    width:350px;
+    border: 2px solid #000;
+    box-sizing: content-box;
+    font-weight: 30px;
+    font-size: 20px;
+    margin-left: 150px;
+   text-align: center;
+    }

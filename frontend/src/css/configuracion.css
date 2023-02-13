@@ -274,6 +274,7 @@ h3 {
 .iMoto {
 
 	width: 100px;
+	margin-left : 92px;
 
 }
 input {
@@ -295,6 +296,10 @@ input {
 	margin-left: 400px;
 	margin-top: -250px;
 
+}
+.input_tarifa iMoto {
+
+	margin-left: 20px;
 }
 #containertarifas {
 	border: 2px solid;

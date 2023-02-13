@@ -436,9 +436,12 @@ function infoFactura() {
       <input type="text"><BR> <br>
       <label>CAPACIDAD:</label>
       <label>Carros:</label>
-      <input type="text"><BR>
+      <input type="text">
+      <label>Logo:</label>
+      <input type="file"  accept="image/png"><br>
       <label id="label_moto">Motos:</label>
       <input type="text">
+      <button>Guardar</button>
       
       
       
