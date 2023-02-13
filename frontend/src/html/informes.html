@@ -9,31 +9,13 @@
 </head>
 
 <body>
-	<script>
-		function startTime(){
-		today=new Date();
-		h=today.getHours();
-		m=today.getMinutes();
-		s=today.getSeconds();
-		m=checkTime(m);
-		s=checkTime(s);
-		
-		
-		
-		
-		//document.getElementById('reloj').innerHTML=h+":"+m+":"+s;
-		t=setTimeout('startTime()',500);}
-		function checkTime(i)
-		{if (i<10) {i="0" + i;}return i;}
-		window.onload=function(){startTime();}
-		</script>
 	<div class="cargar">
 
 	</div>
 	<div class="container_login">
 
 	</div>
-	<script></script>
+	
 	
 	<div class="div_menu">
 		<ul>
@@ -48,6 +30,35 @@
 	<div id="div_titulo">
 		<label class="label_informes">INFORMES</label>
 	</div>
+
+	<script>
+		function startTime(){
+		today=new Date();
+		h=today.getHours();
+		m=today.getMinutes();
+		s=today.getSeconds();
+		m=checkTime(m);
+		s=checkTime(s);
+		
+		if(h<12){
+		
+			document.getElementById('reloj').innerHTML=h+":"+m+":"+s+" AM";
+		
+		
+		}else {
+			document.getElementById('reloj').innerHTML= h-12+":"+m+":"+s+" PM";
+		}
+		
+		
+		//document.getElementById('reloj').innerHTML=h+":"+m+":"+s;
+		t=setTimeout('startTime()',500);}
+		function checkTime(i)
+		{if (i<10) {i="0" + i;}return i;}
+		window.onload=function(){startTime();}
+		</script>
+		
+		<div id="reloj" ></div> 
+
 
 
 	<div>
@@ -134,10 +145,9 @@
 	
 	</script>
 	
-		<div id="reloj" ></div> 
+		
 
-
-
+		
 	<script src="../js/informes.js"></script>
 
 	<div class="container"></div>
