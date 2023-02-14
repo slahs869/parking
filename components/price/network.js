@@ -4,7 +4,7 @@ const controller = require('./controller')
 const router= express.Router();
 
 router.post('/', function(req,res){
-    controller.addUser(req.body.carro, req.body.moto)
+    controller.addUser(req.body.carro, req.body.moto, req.body.carroMes, req.body.motoMes,req.body.nombre,req.body.nit,req.body.direccion,req.body.telefono,req.body.capacidadM,req.body.capacidadC)
         .then(data => {
             response.success(req, res, data, 201);
         })
@@ -25,7 +25,7 @@ router.get('/', function(req,res){
 
 router.patch('/:id',function(req, res){
  
-    controller.updateMessage(req.params.id, req.body.carro,req.body.moto)
+    controller.updateMessage(req.params.id, req.body.carro,req.body.moto, req.body.carroMes, req.body.motoMes,req.body.nombre,req.body.nit,req.body.direccion,req.body.telefono,req.body.capacidadM,req.body.capacidadC)
     .then((data)=>{
         response.success(req,res,data,200);
     })
