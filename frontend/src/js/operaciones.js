@@ -2,6 +2,7 @@
 
 const url = 'http://localhost:3000/message'// 'https://parqueadero2.herokuapp.com/message';
 //const url='http://localhost:3000/message'
+const url2 ='http://localhost:3000/price' //'https://parqueadero2.herokuapp.com/price';
 
 
 
@@ -15,6 +16,7 @@ async function agregar(datos) {
   }).then(res => res.json())
     .catch(error => console.error('Error:', error))
     .then(response => console.log('añadido correctamente'));
+
 }
 
 async function agregarUnDato(id, datos) {
@@ -53,6 +55,15 @@ async function leer() {
 
 
 
+async function leerPrecio() {
+  const response = await fetch(url2, {
+    method: 'GET',
+  });
+  const data = await response.json();
+
+  return data
+}
+
 async function leerConId(id) {
   const response = await fetch(`${url}/${id}`, {
     method: 'GET',
@@ -80,9 +91,9 @@ let carroPrecio = '';
 let mensajeCarro = ''
 
 async function tarifaMotoFunction() {
+  let motoPr=await leerPrecio()
 
-
-  motoPrecio =localStorage.getItem("moto")
+  motoPrecio =parseInt( motoPr.body[0].moto);
   mensajeMoto = 'Moto  ';
   carroPrecio = 0;
   mensajeCarro = '';
@@ -94,8 +105,8 @@ async function tarifaMotoFunction() {
 }
 
 async function tarifaCarroFunction() {
-
-  carroPrecio =localStorage.getItem("carro")
+  let carroPr = await leerPrecio()
+  carroPrecio = parseInt(carroPr.body[0].carro);
   mensajeCarro = 'Carro';
   motoPrecio = 0;
   mensajeMoto = '';
@@ -526,7 +537,14 @@ async function lecturaVivo() {
   }
 }
 
-
+  async function leerPrice() {
+    const response = await fetch(url2, {
+      method: 'GET',
+    });
+    const data = await response.json();
+  
+    return data
+  }
 async function imprSelec(datos) {//nombre) {
  
 
@@ -534,7 +552,10 @@ async function imprSelec(datos) {//nombre) {
   let hora1 = Date.parse(horaEntrada);
   let horaMostrar = horaEntrada.toLocaleTimeString();
   //  let cortarCadena=horaMostrar.substring(0,5)
- 
+    let datosLeer= await leerPrice();
+    let nombre = datosLeer.body[1].nombre;
+    let direccion=datosLeer.body[1].direccion;
+    let nit = datosLeer.body[1].nit;
 
 
   let show = ` <style>
@@ -573,9 +594,9 @@ async function imprSelec(datos) {//nombre) {
   
   </style>
             <div id="div_recibo">
-            <h2 id="h2_titulo">Parqueadero: ${localStorage.getItem('nombrePar')}</h2>
-            <h2 id="h2_recibo">Nit: ${localStorage.getItem('nit')} </h2>
-            <h2 id="h2_recibo">Direccion: ${localStorage.getItem('direccion')}</h2>
+            <h2 id="h2_titulo">Parqueadero: ${nombre}</h2>
+            <h2 id="h2_recibo">Nit: ${nit} </h2>
+            <h2 id="h2_recibo">Direccion: ${direccion}</h2>
             <h2 id="h2_recibof">Recibo #  ${datos.message}</h2>
             <h2 id="h2_recibo">CAJERO: ${window.localStorage.getItem("usuario")}</h2><br>
             <h2 id="h2_recibo">Placa: ${datos.placa}</h2>
@@ -600,7 +621,10 @@ async function imprSelec(datos) {//nombre) {
 }
 
 async function facturaSalida(datos) {//nombre) {
- 
+  let datosLeer= await leerPrice();
+  let nombre = datosLeer.body[1].nombre;
+  let direccion=datosLeer.body[1].direccion;
+  let nit = datosLeer.body[1].nit;
 
 
   let show = ` <style>
@@ -633,10 +657,10 @@ async function facturaSalida(datos) {//nombre) {
     </style>
     
                 
-                <h2 id="h2_titulo">Parqueadero: ${localStorage.getItem('nombrePar')}</h2>
-                <h2 id="h2_recibo">Nit: ${localStorage.getItem('nit')} </h2>
-                <h2 id="h2_recibo">Direccion: ${localStorage.getItem('direccion')}</h2>
-                <h2 id="h2_recibof">Recibo #  ${datos.message}</h2>
+                <h2 id="h2_titulo">PARQUEADERO ${nombre}</h2>
+                <h2 id="h2_titulo">DIRECCION: ${direccion} - 12</h2>
+                <h2 id="h2_recibo">Nit: ${nit} </h2>
+                <h2 id="h2_recibo">FACTURA # ${datos.id}</h2>
                 <h2 id="h2_recibo">CAJERO:${window.localStorage.getItem("usuario")}</h2><br>
                 <h2 id="h2_recibo">PLACA: ${datos.placa}</h2>
                 <h2 id="h2_recibo">Valor Hora: ${datos.precio}
