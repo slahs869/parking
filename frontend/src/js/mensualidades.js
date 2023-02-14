@@ -1,6 +1,6 @@
 //BASE DE DATOS
 
-const url = 'http://localhost:3000/message' //'https://parqueadero2.herokuapp.com/message';
+const url = 'http://localhost:3000/mensualidades' //'https://parqueadero2.herokuapp.com/message';
 //const url='http://localhost:3000/message'
 
 
