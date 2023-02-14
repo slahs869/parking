@@ -1,6 +1,7 @@
 
 button_imprimir = document.querySelector(".imprimir");
 tabla_balance=document.querySelector(".tabla_balance");
+tabla_totalesHD = document.querySelector(".tabla_totalesHD");
 const url = 'http://localhost:3000/message'
 
 
@@ -23,25 +24,17 @@ async function cargarBalance (){
     options.timeZone = 'UTC';
     options.timeZoneName = 'short';
      
-    var now = today.toLocaleString('en-US', options);
+    var now = today.toLocaleString();
    // console.log(today);
- 
-
+   
+    
+   const fixCadena = now.slice(0, 9);
+   
                 let objeto = await leer();
-                fechaActual = (now);
-                //console.log(objeto.body[1].fecha);
-                //console.log(fechaActual);
+                fechaActual = (fixCadena);
+                var suma=0;
                 for(let i=0; i < objeto.body.length; i++){
-                    
-                    objeto.body[i].fechaEntrada = new Date().toLocaleDateString();
-                    console.log(objeto.body[i].fechaEntrada);
-                    console.log(now);
-                    
-                        if(objeto.body[i].fechaEntrada==now){
-
-                            console.log('esto es la fechaEntrada'+objeto.body[i].fechaEntrada);
-                            console.log('esto es la actual' + fechaActual);
-                           
+                        if(objeto.body[i].fechaEntrada==fechaActual && objeto.body[i].total != "NaN"){                           
                             const div = document.createElement('TR');
                              const showText = `
                                 <tr>
@@ -54,19 +47,31 @@ async function cargarBalance (){
                                 </tr>`
                             div.innerHTML = showText;
                             tabla_balance.appendChild(div);
+                            numero1 = parseInt(objeto.body[i].total);
+                            numero2 = parseInt(suma);
+                            suma=numero1 + numero2;
+                            resultado=parseInt(suma);
+                            console.log(resultado);
+                            
+                            
 
                         } 
 
             }
+            const divtotal = document.createElement('TR');
+                             const showText1 = `
+                                <tr>
+                                <td>${resultado}</td>
+                                <td>${suma}</td>
+                                                                </tr>`
+                            divtotal.innerHTML = showText1;
+                            tabla_totalesHD.appendChild(divtotal);
+           
 
 
 }
 
 
-
-
-
-
-  button_imprimir.addEventListener("click", cargarBalance);
-
+  button_imprimir.addEventListener("click", cargarBalance)
+  
   

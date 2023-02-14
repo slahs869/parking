@@ -81,6 +81,7 @@ const btnProcesar = document.querySelector(".buttonSalida")
 const div_totales = document.querySelector(".div_totales")
 const caja_total = document.querySelector(".caja_total")
 const moto = document.querySelector(".moto");
+const boton_balance = document.querySelector(".boton_balance");
 input.minlength="6";
 
 const carro = document.querySelector(".carro")
@@ -690,5 +691,7 @@ const tablaShow = lecturaVivo()
 btnProcesar.addEventListener("click", aggDb)
 moto.addEventListener("click", tarifaMotoFunction)
 carro.addEventListener("click", tarifaCarroFunction);
+
+
 
 

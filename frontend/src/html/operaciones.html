@@ -176,18 +176,6 @@ try{
 } catch(e){
 	console.log('')
 }
-
-var ratonParado = null;
-var milisegundosLimite = 2000;
-
-$(document).on('mousemove', 
-   clearTimeout(ratonParado));
-
-   ratonParado = setTimeout( localStorage.clear(), milisegundosLimite);
-
-
-
-
 </script>
 
 <script>
@@ -221,6 +209,8 @@ window.onload=function(){startTime();}
 
 
 <script src="../js/operaciones.js"></script>
+<script src="../js/balancedecaja.js"></script>
+
 
 </body>
 </html>
