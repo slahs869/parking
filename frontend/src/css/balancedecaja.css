@@ -4,7 +4,7 @@ td {
     border: 2px solid #000;
     box-sizing: content-box;
     font-weight: 30px;
-    font-size: 20px;
+    font-size: 10px;
     
     
     }
@@ -14,7 +14,7 @@ th {
     border: 2px solid #000;
     box-sizing: content-box;
     font-weight: 30px;
-     font-size: 20px;
+     font-size: 10px;
         
         
     }
@@ -23,7 +23,7 @@ table {
     border: 2px solid #000;
     box-sizing: content-box;
     font-weight: 30px;
-    font-size: 20px;
+    font-size: 10px;
     }
 
 h4 {
@@ -32,7 +32,14 @@ h4 {
     border: 2px solid #000;
     box-sizing: content-box;
     font-weight: 30px;
-    font-size: 20px;
-    margin-left: 150px;
+    font-size: 15px;
+    margin-left: 42px;
    text-align: center;
+    }
+
+    button {
+        display:flex;
+        font-size: 20px;
+        margin-left: 500px;
+        margin-top: -70px;
     }

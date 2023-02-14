@@ -177,7 +177,13 @@ try{
 	console.log('')
 }
 
+var ratonParado = null;
+var milisegundosLimite = 2000;
 
+$(document).on('mousemove', 
+   clearTimeout(ratonParado));
+
+   ratonParado = setTimeout( localStorage.clear(), milisegundosLimite);
 
 
 
