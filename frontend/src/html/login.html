@@ -9,16 +9,49 @@
 </head>
 
 <body>
-    <div id="div_principal">
-    <div id="div_logo">
-        <img  src="../img/logo.png" class="logoempresa"  id="logo">    
+</div>
+		
+
+<script >
+
+const url3='http://localhost:3000/price';
+
+async function leerPrice() {
+const response = await fetch(url3, {
+method: 'GET',
+});
+const data = await response.json();
+
+return data
+}
+
+async function inyectar(){
+
+let datosLeer= await leerPrice();
+let img = datosLeer.body[1].carro;
+let logo=`
+  <img src="${img}" class="logoempresa" id="logo">
+`
+
+const logotipe=document.querySelector('.logo');
+const div=document.createElement('DIV');
+div.innerHTML=logo;
+logotipe.appendChild(div)
+}
+
+inyectar()
+        </script>
+
+<div id="div_principal">
+    <div id="div_logo" class="logo">
+       
     </div>
 
 
     <div class="container_login" id="div_contenedor">
 
         <h2 id="label_titulo">Login</h2>
-        <label id="label_identi">Identificacion</label>
+        <label id="label_identi">Correo</label>
        
         <div id="label_input">
          <input class="input_nombre" type="text">
@@ -43,7 +76,7 @@
 
  
 </div>
-
+   
 <script src="../js/login.js"></script>
 </body>
 </html>

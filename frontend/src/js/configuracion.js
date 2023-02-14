@@ -413,7 +413,7 @@ function formularioImpresoras() {
 
 }
 
-function infoFactura() {
+async function infoFactura() {
 
       const div = document.createElement("DIV") // crea un div en memoria 
       container.innerHTML = ` `;
@@ -427,32 +427,77 @@ function infoFactura() {
       </style>
       <h2> Informacion Parqueadero </h2>
       <label>Nombre:</label>
-      <input type="text">
+      <input type="text" class="nombre">
       <label>Nit:</label>
-      <input type="text">
+      <input type="text" class="nit">
       <label>Direccion:</label>
-      <input type="text"><br>
+      <input type="text" class="direccion"><br>
       <label>Telefono:</label>
-      <input type="text"><BR> <br>
+      <input type="text" class="telefono"><BR> <br>
       <label>CAPACIDAD:</label>
       <label>Carros:</label>
-      <input type="text">
+      <input type="text" class="capacidadC">
       <label>Logo:</label>
-      <input type="file"  accept="image/png"><br>
-      <label id="label_moto">Motos:</label>
-      <input type="text">
-      <button>Guardar</button>
-      
-      
-      
+      <input type="file" name="imagensubida" accept="image/*" class="imagen"><br>
+      <label id="label_moto" >Motos:</label>
+      <input type="text" class="capacidadM">
+      <button class="guardar">Guardar</button>
       
       
       `
+ 
       div.innerHTML = variableError;            // metemos el mensaje al div que creamos
       container.appendChild(div);
 
+     const imagen = document.querySelector('.imagen')
+      const guardar= document.querySelector('.guardar')
+      const nombre= document.querySelector('.nombre')
+      const nit= document.querySelector('.nit')
+      const direccion= document.querySelector('.direccion')
+      const telefono= document.querySelector('.telefono')
+      const capacidadC= document.querySelector('.capacidadC')
+      const capacidadM= document.querySelector('.capacidadM')
+   
+     let datos=  await  leerPrecio() 
+   
+      guardar.addEventListener("click", aggdatos)
 
-}
+            async function aggdatos(){
+             
+                  let nombre1= nombre.value;
+                  let nit1=nit.value;
+                  let direccion1=direccion.value;
+                  let telefono1=telefono.value;
+                  let capacidadC1=capacidadC.value;
+                  let capacidadM1=capacidadM.value;
+       
+                  console.log(nombre1,nit1,direccion1,telefono1,capacidadC1,capacidadM1)
+                   const reader = new FileReader();
+                   reader.readAsDataURL(imagen.files[0]);
+                   reader.addEventListener("load",async (e)=>{
+                  let img = e.currentTarget.result;
+                  
+                 await precio("63eae3f325b8cb0812bb7a2b",{
+                        nombre: `${nombre1}`,
+                        nit: `${nit1}`,
+                        direccion:` ${direccion1}`,
+                        telefono: `${telefono1}`,  
+                        capacidadC:`${capacidadC1}`,
+                        capacidadM:`${capacidadM1}`,
+                        carro:`${img}`
+                  })
+
+                  location.reload()
+
+                   })
+            }
+
+
+ }
+
+   
+      
+
 link_factura.addEventListener("click", infoFactura)
 
 
@@ -519,6 +564,9 @@ async function agregar(datos) {
             .then(response => console.log('añadido correctamente'));
 
 }
+
+
+
 
 async function agregarUnDato(id, datos) {
       await fetch(`${url}/${id}`, {

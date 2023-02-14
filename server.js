@@ -8,8 +8,8 @@ db('mongodb+srv://parqueadero:1234@parqueadero.bukk0tt.mongodb.net/?retryWrites=
 const router = require('./network/routes')
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 //app.use(router);
 
 app.use(cors())

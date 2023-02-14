@@ -18,7 +18,38 @@
 
 	</div>
 	
+	<div class="logo"></div>
+	
 	<script >
+
+		
+const url3='http://localhost:3000/price';
+
+async function leerPrice() {
+  const response = await fetch(url3, {
+    method: 'GET',
+  });
+  const data = await response.json();
+
+  return data
+}
+
+
+async function inyectar(){
+
+	let datosLeer= await leerPrice();
+	let img = datosLeer.body[1].carro;
+	let logo=`
+		<div><img src="${img}" class="logoempresa" id="logo"></div>
+	`
+
+	const logotipe=document.querySelector('.logo');
+	const div=document.createElement('DIV');
+	div.innerHTML=logo;
+	logotipe.appendChild(div)
+}
+
+inyectar()
 
 	let html=`	
 
@@ -36,9 +67,7 @@
 		MODULO OPERATIVO
 	</div>
 </div>
-	<div>
-		<div><img  src="../img/logo.png" class="logoempresa"  id="logo"></div>
-	</div>
+	
 
 	<div class="div_imagen" id="div_imagen">
 		<img src="../img/moto.png" class="moto" id="moto" autofocus="true"></div>
@@ -151,6 +180,8 @@ try{
 } catch(e){
 	console.log('')
 }
+
+
 
 
 

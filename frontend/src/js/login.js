@@ -34,7 +34,7 @@ async function lectura() {
 
    
 
-    if(objeto.body[i].name == input_nombre.value && objeto.body[i].password == input_password.value) {
+    if(objeto.body[i].email == input_nombre.value && objeto.body[i].password == input_password.value) {
        
         let activo = window.localStorage.setItem("activo",objeto.body[i].estado)
         let datos = window.localStorage.setItem("usuario",objeto.body[i].name);
