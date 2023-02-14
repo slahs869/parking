@@ -5,7 +5,6 @@ const url = 'http://localhost:3000/message'// 'https://parqueadero2.herokuapp.co
 const url2 ='http://localhost:3000/price' //'https://parqueadero2.herokuapp.com/price';
 
 
-
 async function agregar(datos) {
   await fetch(url, {
     method: 'POST', // or 'PUT'
@@ -16,7 +15,6 @@ async function agregar(datos) {
   }).then(res => res.json())
     .catch(error => console.error('Error:', error))
     .then(response => console.log('añadido correctamente'));
-
 }
 
 async function agregarUnDato(id, datos) {
@@ -63,6 +61,14 @@ async function leerPrecio() {
 
   return data
 }
+
+
+
+async function guardarDatos(){
+ let leerP = await leerPrecio();
+ localStorage.setItem("foto",leerP.body[1].carro) 
+}
+guardarDatos()
 
 async function leerConId(id) {
   const response = await fetch(`${url}/${id}`, {

@@ -23,23 +23,10 @@
 	<script >
 
 		
-const url3='http://localhost:3000/price';
+let img = localStorage.getItem("foto")
+		console.log(img)
 
-async function leerPrice() {
-  const response = await fetch(url3, {
-    method: 'GET',
-  });
-  const data = await response.json();
-
-  return data
-}
-
-
-async function inyectar(){
-
-	let datosLeer= await leerPrice();
-	let img = datosLeer.body[1].carro;
-	let logo=`
+		let logo=`
 		<div><img src="${img}" class="logoempresa" id="logo"></div>
 	`
 
@@ -47,9 +34,6 @@ async function inyectar(){
 	const div=document.createElement('DIV');
 	div.innerHTML=logo;
 	logotipe.appendChild(div)
-}
-
-inyectar()
 
 	let html=`	
 

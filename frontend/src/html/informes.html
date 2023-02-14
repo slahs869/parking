@@ -62,20 +62,7 @@
 		<div class="foto"></div>
 
 	<script>
-		     const url3='http://localhost:3000/price';
-        
-
-		async function leerPrice() {
-		const response = await fetch(url3, {
-			method: 'GET',
-		});
-		const data = await response.json();
-
-		return data
-		}
-		async function showImg(){
-			let datosLeer= await leerPrice();
-	let img = datosLeer.body[1].carro;
+		  let img=localStorage.getItem("foto")
 			let html=`<img  src="${img}" class="logoempresa"  id="logo">
 			</div>	<div>`
 				
@@ -83,8 +70,7 @@
 		const fotogra=document.querySelector('.foto')
 		div.innerHTML=html;
 		fotogra.appendChild(div)
-		}
-		showImg();
+	
 		</script>
 
 	<div id="div_imagen">

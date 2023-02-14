@@ -460,6 +460,7 @@ async function infoFactura() {
    
      let datos=  await  leerPrecio() 
    
+   
       guardar.addEventListener("click", aggdatos)
 
             async function aggdatos(){
@@ -476,7 +477,7 @@ async function infoFactura() {
                    reader.readAsDataURL(imagen.files[0]);
                    reader.addEventListener("load",async (e)=>{
                   let img = e.currentTarget.result;
-                  
+                  localStorage.setItem("foto",img)
                  await precio("63eae3f325b8cb0812bb7a2b",{
                         nombre: `${nombre1}`,
                         nit: `${nit1}`,

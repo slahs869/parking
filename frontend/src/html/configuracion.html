@@ -18,20 +18,7 @@
 	
 
 	<script>
-
-const url3='http://localhost:3000/price';
-
-async function leerPrice() {
-  const response = await fetch(url3, {
-    method: 'GET',
-  });
-  const data = await response.json();
-
-  return data
-}
-async function inyectar(){
-	let datosLeer= await leerPrice();
-	let img = datosLeer.body[1].carro;
+let img=localStorage.getItem("foto")
 	let logo=`
 		<img src="${img}" class="logoempresa" id="logo">
 	`
@@ -40,10 +27,6 @@ async function inyectar(){
 	
 	logotipe.innerHTML=logo
 
-
-}
-
-inyectar()
 
 
 
