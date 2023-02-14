@@ -17,6 +17,8 @@ async function formularioTarifas() {
     <div id="container2">
                     
           <h2> Defina la tarifa para: </h2> 
+
+          <h2> Dia</h2> 
           <h3>AUTOMOVIL:</h3>
           <input type="text" class="iCarro"><br> 
           <button id="boton_guardar" class="guardar_carro ">Guardar</button>
@@ -24,10 +26,20 @@ async function formularioTarifas() {
           <h3>MOTO: </h3>
           <input type="text" class="input_tarifa iMoto">
           <button id="boton_guardar" class="guardar_Moto ">Guardar</button>
+          <h2> Mes</h2> 
+          <h3>AUTOMOVIL:</h3>
+          <input type="text" class="iCarro_mes"><br> 
+          <button id="boton_guardar" class="guardar_carro_mes ">Guardar</button>
+          
+          <h3>MOTO: </h3>
+          <input type="text" class="input_tarifa iMoto_mes">
+          <button id="boton_guardar" class="guardar_Moto_mes ">Guardar</button>
       
     </div> 
     <div class="containertarifas" id="containertarifas">
-    </div>                  
+    </div> 
+    <div class="containertarifas_mes" id="containertarifas">
+    </div>                   
           `       // crea el formularios para el div
       div.innerHTML = variableError;            // metemos el mensaje al div que creamos
       container.appendChild(div);
@@ -41,7 +53,7 @@ async function formularioTarifas() {
       botonCarro.addEventListener("click", carro)
       let MostarPrecio=await leerPrecio()
      let tarifas=document.querySelector('.containertarifas')
-     tarifas.innerHTML=`<h3>Precio actual:</h3>
+     tarifas.innerHTML=`<h3>Precio actual hora:</h3>
      <h3>carro: ${MostarPrecio.body[0].carro}</h3>
      <h3>moto: ${MostarPrecio.body[0].moto}</h3>`
       async function carro(){
@@ -68,17 +80,44 @@ async function formularioTarifas() {
             } 
       }
 
-      async function all(){
-            if(inputCarro.value !='' &&  inputMoto.value !=''){
-                  let datosPrecio=await leerPrecio()
+      botonCarro_mes=document.querySelector('.guardar_carro_mes')
+      inputCarro_mes=document.querySelector('.iCarro_mes')
+      botonMoto_mes=document.querySelector('.guardar_Moto_mes')
+      inputMoto_mes=document.querySelector('.iMoto_mes')
+
+      botonMoto_mes.addEventListener("click", moto_mes)
+      botonCarro_mes.addEventListener("click", carro_mes)
+      let MostarPrecio_mes=await leerPrecio()
+     let tarifas_mes=document.querySelector('.containertarifas_mes')
+     tarifas_mes.innerHTML=`<h3>Precio actual mes:</h3>
+     <h3>carro: ${MostarPrecio_mes.body[2].carro}</h3>
+     <h3>moto: ${MostarPrecio_mes.body[2].moto}</h3>`
+      async function carro_mes(){
+            if(inputCarro_mes.value !='' &&  !isNaN(inputCarro_mes.value)){
+                  let datosPrecio_mes=await leerPrecio()
                   
-               await precio('63e183f27dda95ae0da4ebcd', {
-                        carro:inputCarro.value,
-                        moto:inputMoto.value,
+               await precio('63eb5ea5197365e272f55725', {
+                        carro:inputCarro_mes.value,
+                        moto:datosPrecio_mes.body[2].moto
                   })
+                  localStorage.setItem("carro",inputCarro_mes.value)
                   formularioTarifas()
             }
       }
+      async function moto_mes(){
+            if(inputMoto_mes.value !=''  &&  !isNaN(inputMoto_mes.value)){
+                  let datosPrecio_mes=await leerPrecio()
+                await  precio('63eb5ea5197365e272f55725', {
+                        moto:inputMoto_mes.value,
+                        carro:datosPrecio_mes.body[2].carro
+                  })
+                  localStorage.setItem("moto",inputMoto_mes.value)
+                  formularioTarifas()
+            } 
+      }
+
+
+     
 }
 
 
