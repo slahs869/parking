@@ -18,20 +18,7 @@
 	
 
 	<script>
-
-const url3='http://localhost:3000/price';
-
-async function leerPrice() {
-  const response = await fetch(url3, {
-    method: 'GET',
-  });
-  const data = await response.json();
-
-  return data
-}
-async function inyectar(){
-	let datosLeer= await leerPrice();
-	let img = datosLeer.body[1].carro;
+let img=localStorage.getItem("foto")
 	let logo=`
 		<img src="${img}" class="logoempresa" id="logo">
 	`
@@ -40,10 +27,6 @@ async function inyectar(){
 	
 	logotipe.innerHTML=logo
 
-
-}
-
-inyectar()
 
 
 
@@ -92,14 +75,9 @@ inyectar()
 
 		<div id="container2">
                     
-					<h2> Defina la tarifa para: </h2> 
-					<h3>AUTOMOVIL:</h3>
-					<input type="text" class="iCarro"><br> 
 					
-					<h3>MOTO: </h3>
-					<input type="text" class="input_tarifa iMoto">
-					<button id="boton_guardar" class="guardar_Moto ">Guardar</button>
-				
+					<div class="iCarro"><br> 
+					
 			  </div> 
 			  <div class="containertarifas" id="containertarifas">
 			  </div>    

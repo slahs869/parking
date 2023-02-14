@@ -17,16 +17,29 @@ async function formularioTarifas() {
     <div id="container2">
                     
           <h2> Defina la tarifa para: </h2> 
+
+          <h2> Dia</h2> 
           <h3>AUTOMOVIL:</h3>
           <input type="text" class="iCarro"><br> 
+          <button id="boton_guardar" class="guardar_carro ">Guardar</button>
           
           <h3>MOTO: </h3>
           <input type="text" class="input_tarifa iMoto">
           <button id="boton_guardar" class="guardar_Moto ">Guardar</button>
+          <h2> Mes</h2> 
+          <h3>AUTOMOVIL:</h3>
+          <input type="text" class="iCarro_mes"><br> 
+          <button id="boton_guardar" class="guardar_carro_mes ">Guardar</button>
+          
+          <h3>MOTO: </h3>
+          <input type="text" class="input_tarifa iMoto_mes">
+          <button id="boton_guardar" class="guardar_Moto_mes ">Guardar</button>
       
     </div> 
     <div class="containertarifas" id="containertarifas">
-    </div>                  
+    </div> 
+    <div class="containertarifas_mes" id="containertarifas">
+    </div>                   
           `       // crea el formularios para el div
       div.innerHTML = variableError;            // metemos el mensaje al div que creamos
       container.appendChild(div);
@@ -37,10 +50,10 @@ async function formularioTarifas() {
       inputMoto=document.querySelector('.iMoto')
 
       botonMoto.addEventListener("click", moto)
-      botonMoto.addEventListener("click", carro)
+      botonCarro.addEventListener("click", carro)
       let MostarPrecio=await leerPrecio()
      let tarifas=document.querySelector('.containertarifas')
-     tarifas.innerHTML=`<h3>Precio actual:</h3>
+     tarifas.innerHTML=`<h3>Precio actual hora:</h3>
      <h3>carro: ${MostarPrecio.body[0].carro}</h3>
      <h3>moto: ${MostarPrecio.body[0].moto}</h3>`
       async function carro(){
@@ -51,6 +64,7 @@ async function formularioTarifas() {
                         carro:inputCarro.value,
                         moto:datosPrecio.body[0].moto
                   })
+                  localStorage.setItem("carro",inputCarro.value)
                   formularioTarifas()
             }
       }
@@ -61,9 +75,49 @@ async function formularioTarifas() {
                         moto:inputMoto.value,
                         carro:datosPrecio.body[0].carro
                   })
+                  localStorage.setItem("moto",inputMoto.value)
                   formularioTarifas()
             } 
       }
+
+      botonCarro_mes=document.querySelector('.guardar_carro_mes')
+      inputCarro_mes=document.querySelector('.iCarro_mes')
+      botonMoto_mes=document.querySelector('.guardar_Moto_mes')
+      inputMoto_mes=document.querySelector('.iMoto_mes')
+
+      botonMoto_mes.addEventListener("click", moto_mes)
+      botonCarro_mes.addEventListener("click", carro_mes)
+      let MostarPrecio_mes=await leerPrecio()
+     let tarifas_mes=document.querySelector('.containertarifas_mes')
+     tarifas_mes.innerHTML=`<h3>Precio actual mes:</h3>
+     <h3>carro: ${MostarPrecio_mes.body[2].carro}</h3>
+     <h3>moto: ${MostarPrecio_mes.body[2].moto}</h3>`
+      async function carro_mes(){
+            if(inputCarro_mes.value !='' &&  !isNaN(inputCarro_mes.value)){
+                  let datosPrecio_mes=await leerPrecio()
+                  
+               await precio('63eb5ea5197365e272f55725', {
+                        carro:inputCarro_mes.value,
+                        moto:datosPrecio_mes.body[2].moto
+                  })
+                  localStorage.setItem("carro",inputCarro_mes.value)
+                  formularioTarifas()
+            }
+      }
+      async function moto_mes(){
+            if(inputMoto_mes.value !=''  &&  !isNaN(inputMoto_mes.value)){
+                  let datosPrecio_mes=await leerPrecio()
+                await  precio('63eb5ea5197365e272f55725', {
+                        moto:inputMoto_mes.value,
+                        carro:datosPrecio_mes.body[2].carro
+                  })
+                  localStorage.setItem("moto",inputMoto_mes.value)
+                  formularioTarifas()
+            } 
+      }
+
+
+     
 }
 
 
@@ -460,6 +514,7 @@ async function infoFactura() {
    
      let datos=  await  leerPrecio() 
    
+   
       guardar.addEventListener("click", aggdatos)
 
             async function aggdatos(){
@@ -476,7 +531,11 @@ async function infoFactura() {
                    reader.readAsDataURL(imagen.files[0]);
                    reader.addEventListener("load",async (e)=>{
                   let img = e.currentTarget.result;
-                  
+                  localStorage.setItem("foto",img)
+                  localStorage.setItem("direccion",direccion1)
+                  localStorage.setItem("telefono",telefono1)
+                  localStorage.setItem("nit",nit1)
+              
                  await precio("63eae3f325b8cb0812bb7a2b",{
                         nombre: `${nombre1}`,
                         nit: `${nit1}`,

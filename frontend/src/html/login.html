@@ -9,42 +9,16 @@
 </head>
 
 <body>
-</div>
+<div class="show"></div>
 		
 
 <script >
 
-const url3='http://localhost:3000/price';
-
-async function leerPrice() {
-const response = await fetch(url3, {
-method: 'GET',
-});
-const data = await response.json();
-
-return data
-}
-
-async function inyectar(){
-
-let datosLeer= await leerPrice();
-let img = datosLeer.body[1].carro;
-let logo=`
-  <img src="${img}" class="logoempresa" id="logo">
-`
-
-const logotipe=document.querySelector('.logo');
-const div=document.createElement('DIV');
-div.innerHTML=logo;
-logotipe.appendChild(div)
-}
-
-inyectar()
-        </script>
-
+let imagen= localStorage.getItem("foto")
+let html=`
 <div id="div_principal">
     <div id="div_logo" class="logo">
-       
+        <img src="${imagen}" class="logoempresa" id="logo">
     </div>
 
 
@@ -76,6 +50,12 @@ inyectar()
 
  
 </div>
+
+`
+const show=document.querySelector(".show");
+show.innerHTML=html;
+
+</script>
    
 <script src="../js/login.js"></script>
 </body>

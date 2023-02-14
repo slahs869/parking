@@ -39,7 +39,6 @@ async function lectura() {
         let activo = window.localStorage.setItem("activo",objeto.body[i].estado)
         let datos = window.localStorage.setItem("usuario",objeto.body[i].name);
         let datos1 = window.localStorage.setItem("email",objeto.body[i].email);
-        let datos2 = window.localStorage.setItem("contraseña",objeto.body[i].password);
         let datos3 = window.localStorage.setItem("estado",objeto.body[i].estado);
         window.open('operaciones.html');
         window.close('login.html');        

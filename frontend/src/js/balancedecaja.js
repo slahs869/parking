@@ -3,6 +3,12 @@ button_imprimir = document.querySelector(".imprimir");
 tabla_balance=document.querySelector(".tabla_balance");
 tabla_totalesHD = document.querySelector(".tabla_totalesHD");
 const url = 'http://localhost:3000/message'
+const url2 = 'http://localhost:3000/price'
+
+
+
+  const conaier = document.querySelector('.nombre_parkin')
+ conaier.innerHTML=` <h3>PARQUEADERO ${localStorage.getItem("nombrePar")}</h3>`
 
 
 

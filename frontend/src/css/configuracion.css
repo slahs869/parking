@@ -301,7 +301,7 @@ input {
 	margin-left: 20px;
 }
 #containertarifas {
-	border: 2px solid;
+
 	display: flex;
 	z-index: 1;
 	width: 500px;
