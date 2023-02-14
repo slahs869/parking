@@ -57,7 +57,7 @@ async function cargarBalance (){
 
                              const showText = `
                                 <tr>
-                                <td>${objeto.body[i].id}</td>
+                                <td>${objeto.body[i]._id}</td>
                                 <td>${objeto.body[i].placa}</td>
                                 <td>${objeto.body[i].message}</td>
                                 <td>${objeto.body[i].fechaEntrada}</td>
@@ -85,11 +85,11 @@ async function cargarBalance (){
               if(objetoMensualidad.body[i].mensualidad=="si" && objetoMensualidad.body[i].fechaEntrada==fechaActual){
                 
                 console.log(objetoMensualidad.body[i]);
-                console.log(objetoMensualidad.body[i].fechaEntrada);
+                
                 const div = document.createElement('TR');
                 const showText = `
                                 <tr>
-                                <td>${objetoMensualidad.body[i].id}</td>
+                                <td>${objetoMensualidad.body[i]._id}</td>
                                 <td>${objetoMensualidad.body[i].placa}</td>
                                 <td>${objetoMensualidad.body[i].message}</td>
                                 <td>${objetoMensualidad.body[i].fechaEntrada}</td>
@@ -140,13 +140,16 @@ async function cargarBalance (){
                                                                 </tr>`
                             divtotalMes.innerHTML = showText2;
                             tabla_totalesMes.appendChild(divtotalMes);
+                            
+
            
 
-
+             print();
 }
 
 
   button_imprimir.addEventListener("click", cargarBalance)
+  
   
  
   
