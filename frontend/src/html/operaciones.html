@@ -25,7 +25,7 @@
 		let img = localStorage.getItem("foto")
 		console.log(img)
 
-	let logo=`
+		let logo=`
 		<div><img src="${img}" class="logoempresa" id="logo"></div>
 	`
 
@@ -137,7 +137,10 @@ try{
 
 			cerrar=document.querySelector('.cerrar_seccion')
 			cerrar.addEventListener("click", ()=>{
-				localStorage.clear();
+				localStorage.removeItem("email");
+				localStorage.removeItem("contraseña");
+				localStorage.removeItem("usuario");
+				localStorage.removeItem("activo");
 				
 			})
 			

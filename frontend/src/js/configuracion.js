@@ -19,6 +19,7 @@ async function formularioTarifas() {
           <h2> Defina la tarifa para: </h2> 
           <h3>AUTOMOVIL:</h3>
           <input type="text" class="iCarro"><br> 
+          <button id="boton_guardar" class="guardar_carro ">Guardar</button>
           
           <h3>MOTO: </h3>
           <input type="text" class="input_tarifa iMoto">
@@ -37,7 +38,7 @@ async function formularioTarifas() {
       inputMoto=document.querySelector('.iMoto')
 
       botonMoto.addEventListener("click", moto)
-      botonMoto.addEventListener("click", carro)
+      botonCarro.addEventListener("click", carro)
       let MostarPrecio=await leerPrecio()
      let tarifas=document.querySelector('.containertarifas')
      tarifas.innerHTML=`<h3>Precio actual:</h3>
@@ -51,6 +52,7 @@ async function formularioTarifas() {
                         carro:inputCarro.value,
                         moto:datosPrecio.body[0].moto
                   })
+                  localStorage.setItem("carro",inputCarro.value)
                   formularioTarifas()
             }
       }
@@ -61,8 +63,21 @@ async function formularioTarifas() {
                         moto:inputMoto.value,
                         carro:datosPrecio.body[0].carro
                   })
+                  localStorage.setItem("moto",inputMoto.value)
                   formularioTarifas()
             } 
+      }
+
+      async function all(){
+            if(inputCarro.value !='' &&  inputMoto.value !=''){
+                  let datosPrecio=await leerPrecio()
+                  
+               await precio('63e183f27dda95ae0da4ebcd', {
+                        carro:inputCarro.value,
+                        moto:inputMoto.value,
+                  })
+                  formularioTarifas()
+            }
       }
 }
 
@@ -478,6 +493,10 @@ async function infoFactura() {
                    reader.addEventListener("load",async (e)=>{
                   let img = e.currentTarget.result;
                   localStorage.setItem("foto",img)
+                  localStorage.setItem("direccion",direccion1)
+                  localStorage.setItem("telefono",telefono1)
+                  localStorage.setItem("nit",nit1)
+              
                  await precio("63eae3f325b8cb0812bb7a2b",{
                         nombre: `${nombre1}`,
                         nit: `${nit1}`,
