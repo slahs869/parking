@@ -38,8 +38,8 @@ cursor: pointer;
 
 
     background-color: yellow;
-    width: 230px;
-    height: 108px;
+    width: 250px;
+    height: 111px;
     display: flex;
     position: absolute;
     margin-left: 1350px;
@@ -48,6 +48,7 @@ cursor: pointer;
     padding: 10px;
     opacity: 0.8;
  }
+ 
 
 
 
@@ -76,29 +77,29 @@ padding-left: 1500px;
 }
 
 #carro {
-border: 3px solid rgb(14, 14, 14);
-border-radius: 20px;
-margin-top: 251px;
-width: 180px;
-height: 100px;
-position: absolute;
-background-color: white;
-transition: 0.5s;
-cursor:pointer;
-
+    border: 3px solid rgb(14, 14, 14);
+    border-radius: 20px;
+    margin-top: 240px;
+    width: 150px;
+    height: 70px;
+    position: absolute;
+    background-color: white;
+    transition: 0.5s;
+    cursor:pointer;
+    margin-left: -22px;
 }
 
 #moto {
-border: 3px solid black;
-border-radius: 20px;
-margin-top: 138px;
-width: 180px;
-height: 100px;
-position: absolute;
-background-color: white;
-transition: 0.5s;
-cursor:pointer;
-
+    border: 3px solid black;
+    border-radius: 20px;
+    margin-top: 160px;
+    width: 150px;
+    height: 70px;
+    position: absolute;
+    background-color: white;
+    transition: 0.5s;
+    cursor:pointer;
+    margin-left: -22px;
 }
 
 #moto:hover {

@@ -83,26 +83,28 @@ padding-left: 1500px;
 #carro {
 border: 3px solid rgb(14, 14, 14);
 border-radius: 20px;
-margin-top: 251px;
+margin-top: 240px;
 width: 150px;
 height: 70px;
 position: absolute;
 background-color: white;
 transition: 0.5s;
 cursor:pointer;
+margin-left:-22px;
 
 }
 
 #moto {
 border: 3px solid black;
 border-radius: 20px;
-margin-top: 152px;
+margin-top: 160px;
 width: 150px;
 height: 70px;
 position: absolute;
 background-color: white;
 transition: 0.5s;
 cursor:pointer;
+margin-left:-22px;
 
 }
 

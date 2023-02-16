@@ -37,15 +37,17 @@ body {
 
 
     background-color: yellow;
-    width: 230px;
-    height: 120px;
-    display: flex;
-    
+    width: 250px;
+    height: 111px;
+    display: flex;    
     margin-left: 1350px;
     border: 2px solid;
     border-radius: 10px;
     padding: 10px;
     opacity: 0.8;
+	margin-top:-5px;
+
+	
  }
 
  
@@ -62,10 +64,10 @@ body {
 	height: 200px;
 	position: relative;
 	margin-left: 300px;
-	margin-top: -240px;
 	border: 3px solid;
 	opacity: 0.6;
 	border-radius: 20px;
+	text-align: center;
 }
 .cargar {
 	width: 10px;
@@ -251,7 +253,7 @@ select {
 	font-size: 30px;
     height: 47px;
     width: 252px;
-    display: flex;
+    display: inline;
     margin-top: 8px;
     margin-left: 17px
 }

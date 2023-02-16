@@ -17,13 +17,10 @@
 	<div class="logo"></div>
 
 	<script>
-		let img = localStorage.getItem("foto")
-	
-
-	let logo=`
+		let img = localStorage.getItem("foto");
+		let logo=`
 	<div><img src="${img}" class="logoempresa" id="logo"></div>
 `
-
 const logotipe=document.querySelector('.logo');
 const div=document.createElement('DIV');
 div.innerHTML=logo;
@@ -49,18 +46,12 @@ let html = `
 
 	<div class="foto"></div>
 
-	<div id="div_imagen">
-		<img src="../img/moto.png" id="moto">
-	</div>
-
-	<div id="div_imagen">
-		<div><img src="../img/carro logo.png" id="carro">
-		</div>
+	
 	</div>
 
 	<div id="div_consulta_informes">
-		<div id="operativo_informes">
-			<label id="label_busqueda">BUSQUEDA POR:</label>
+		<label id="label_busqueda">BUSQUEDA POR:</label>
+		<div id="operativo_informes">			
 			<select class="select">
 				<option>PLACA</option>
 				<option>FECHA</option>
