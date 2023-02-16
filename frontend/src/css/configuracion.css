@@ -6,25 +6,33 @@ body {
 	height: 500px;
 }
 #div_titulo {
-
+	position: relative;
 	background-color: yellow;
-	width: 700px;
+	width: 800px;
 	height: 80px;
 	margin-left: 450px;
 	margin-top: 10px;
 	border: 3px solid;
-	display: inline-flex;
+	display: inline-block;
 	border-radius: 20px;
 	opacity: 0.6;
 	font-size: 60px;
-	font-size-adjust: auto;
-	padding-left: 70px;
-	align-content: center;
-
-}
+	text-align: center;
+	
+	
+	
+	}
 
 #item_menu:hover {
 	font-size: 30px;
+}
+
+#div_tarifa,#div_tarifa2 {
+
+	border: 1px solid;
+    width: 430px;
+    height: 184px;
+    margin-left: 32px;
 }
 
 .container1 {
@@ -242,7 +250,19 @@ button {
 	border-radius: 10px;
 	
 }
+.iCarro_dia {
+	width: 100px;
 
+}
+
+
+#boton_guardar {
+	margin-top: -20px;
+	width: 90px;
+	height: 30px;
+	margin-left: 304px;
+	
+}
 .boton_crear,.boton_editar,.boton_eliminar {
 
 	font-size: 20px;
@@ -258,8 +278,9 @@ button {
 }
 h3 {
 	display: inline;
-	font-size: 20px;
-	margin: 10px 28px;
+    font-size: 20px;
+    text-align: center;
+	margin-left: 10px;
 }
 
 #input_file {
@@ -275,9 +296,11 @@ h3 {
 
 }
 .iMoto {
-
+	
 	width: 100px;
-	margin-left : 92px;
+    margin-left: 24px;
+    margin-top: -5px;
+	
 
 }
 input {
@@ -304,29 +327,51 @@ input {
 
 	margin-left: 20px;
 }
-#containertarifas {
-	
+h4 {
+
+	margin: 10px 0px;
+}
+h5 {
+	font-size: 20px;
+}
+.containertarifas {
     display: flex;
     z-index: 1;
     width: 220px;
-    height: 160px;
+    height: 181px;
+    position: absolute;
+    display: flex;
+    align-self: center;
+    margin-left: 500px;
+    margin-top: -371px;
+    flex-direction: column;
+    border: 1PX solid;
+}
+.containertarifas_mes {
+    display: flex;
+    z-index: 1;
+    width: 220px;
+    height: 185px;
     position: relative;
     display: flex;
     align-self: center;
     margin-left: 500px;
-    margin-top: -304px;
+    margin-top: -188px;
     flex-direction: column;
+    border: 1PX solid;
 }
 
 
 
 
-
+h1 {
+	text-align: center;
+}
 h2 {
 	font-size: 30px;
 	text-align: center;
-	display: flex;
-	margin-left: 325px;
+	
+	
 }
 
 #tabla_crear {
@@ -353,6 +398,9 @@ td {
 	font-size: 20px;
 	
 	
+	}
+	.iCarro_mes {
+		width: 100px;
 	}
 #div_historico {
 		background-color: white;

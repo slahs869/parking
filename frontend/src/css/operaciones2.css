@@ -7,7 +7,7 @@ body {
 #div_titulo {
 position: absolute;
 background-color: yellow;
-width: 700px;
+width: 800px;
 height: 80px;
 margin-left: 450px;
 margin-top: 10px;
@@ -16,9 +16,9 @@ display: inline-block;
 border-radius: 20px;
 opacity: 0.6;
 font-size: 60px;
-font-size-adjust: auto;
+
 align-content: center;
-padding-left: 80px;
+text-align: center;
 
 }
 .fas fa-home {

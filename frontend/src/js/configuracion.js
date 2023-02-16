@@ -1,4 +1,4 @@
-const url ='http://localhost:3000/user';    //'https://parqueadero2.herokuapp.com/user';
+const url = 'http://localhost:3000/user';    //'https://parqueadero2.herokuapp.com/user';
 const url2 = 'http://localhost:3000/price'; // 'https://parqueadero2.herokuapp.com/price';
 
 const container = document.querySelector(".container1");
@@ -14,110 +14,123 @@ async function formularioTarifas() {
       container.innerHTML = ` `;
       container.appendChild(div);
       let variableError = ` 
-    <div id="container2">
-                    
-          <h2> Defina la tarifa para: </h2> 
+      <div id="container2">
+			<h1> PLAN DE TARIFAS </h1> 
 
-          <h2> Valor Hora</h2> 
-          <h3>AUTOMOVIL:</h3>
-          <input type="text" class="iCarro"><br> 
-          <button id="boton_guardar" class="guardar_carro ">Guardar</button>
+		<div id="div_tarifa">
+          <h2> MOTOS: </h2> 
+          <h3>HORA:</h3>
+		  <input type="text" class="iMoto">
+          <h3>DIA:</h3>
+		  <input type="text" class="iMoto_dia"> 
+		  <h3>MES:</h3>
+		  <input type="text" class="iMoto_mes">
+		  <button id="boton_guardar" class="guardar_Moto ">Guardar</button>
+		  </div>
+
+		  <div id="div_tarifa">
+			<h2>CARROS: </h2>			
+                  <h3> HORA:</h3> 
+		      <input type="text" class="iCarro"> 
+		      <h3>DIA:</h3>        
+                  <input type="text" class="iCarro_dia">          
+                  <h3>MES: </h3>
+		      <input type="text" class="iCarro_mes">
+		      <button id="boton_guardar" class="guardar_carro ">Guardar</button>
+                  </div>
           
-          <h3>MOTO: </h3>
-          <input type="text" class="input_tarifa iMoto">
-          <button id="boton_guardar" class="guardar_Moto ">Guardar</button>
-          <h2> Valor Mes</h2> 
-          <h3>AUTOMOVIL:</h3>
-          <input type="text" class="iCarro_mes"><br> 
-          <button id="boton_guardar" class="guardar_carro_mes ">Guardar</button>
-          
-          <h3>MOTO: </h3>
-          <input type="text" class="input_tarifa iMoto_mes">
-          <button id="boton_guardar" class="guardar_Moto_mes ">Guardar</button>
-      
-    </div> 
-    <div class="containertarifas" id="containertarifas">
-    </div> 
-    <div class="containertarifas_mes" id="containertarifas">
-    </div>                   
+      <div class="iCarro">
+		
+		</div> 
+
+
+		<div class="containertarifas" id="containertarifas">
+            </div> 
+            <div class="containertarifas_mes" id="containertarifas_mes">
+            </div> 
+                       
           `       // crea el formularios para el div
       div.innerHTML = variableError;            // metemos el mensaje al div que creamos
       container.appendChild(div);
       // metemos el div en memoria al container del html    
-      botonCarro=document.querySelector('.guardar_carro')
-      inputCarro=document.querySelector('.iCarro')
-      botonMoto=document.querySelector('.guardar_Moto')
-      inputMoto=document.querySelector('.iMoto')
+      botonCarro = document.querySelector('.guardar_carro')
+      inputCarro = document.querySelector('.iCarro')
+      botonMoto = document.querySelector('.guardar_Moto')
+      inputMoto = document.querySelector('.iMoto')
 
       botonMoto.addEventListener("click", moto)
       botonCarro.addEventListener("click", carro)
-      let MostarPrecio=await leerPrecio()
-     let tarifas=document.querySelector('.containertarifas')
-     tarifas.innerHTML=`<h3>Precio actual hora:</h3>
-     <h3>carro: ${MostarPrecio.body[0].carro}</h3>
-     <h3>moto: ${MostarPrecio.body[0].moto}</h3>`
-      async function carro(){
-            if(inputCarro.value !='' &&  !isNaN(inputCarro.value)){
-                  let datosPrecio=await leerPrecio()
-                  
-               await precio('63e183f27dda95ae0da4ebcd', {
-                        carro:inputCarro.value,
-                        moto:datosPrecio.body[0].moto
+      let MostarPrecio = await leerPrecio()
+      let tarifas = document.querySelector('.containertarifas')
+      tarifas.innerHTML = `<h3>TARIFAS MOTO:</h3>
+     <h4>HORA MOTO: ${MostarPrecio.body[0].carro}</h4>
+     <h4>DIA MOTO: ${MostarPrecio.body[0].moto}</h4>
+     <h4>MES MOTO: ${MostarPrecio.body[0].moto}</h4>`
+
+
+      async function carro() {
+            if (inputCarro.value != '' && !isNaN(inputCarro.value)) {
+                  let datosPrecio = await leerPrecio()
+
+                  await precio('63e183f27dda95ae0da4ebcd', {
+                        carro: inputCarro.value,
+                        moto: datosPrecio.body[0].moto
                   })
-                  localStorage.setItem("carro",inputCarro.value)
+                  localStorage.setItem("carro", inputCarro.value)
                   formularioTarifas()
             }
       }
-      async function moto(){
-            if(inputMoto.value !=''  &&  !isNaN(inputMoto.value)){
-                  let datosPrecio=await leerPrecio()
-                await  precio('63e183f27dda95ae0da4ebcd', {
-                        moto:inputMoto.value,
-                        carro:datosPrecio.body[0].carro
+      async function moto() {
+            if (inputMoto.value != '' && !isNaN(inputMoto.value)) {
+                  let datosPrecio = await leerPrecio()
+                  await precio('63e183f27dda95ae0da4ebcd', {
+                        moto: inputMoto.value,
+                        carro: datosPrecio.body[0].carro
                   })
-                  localStorage.setItem("moto",inputMoto.value)
+                  localStorage.setItem("moto", inputMoto.value)
                   formularioTarifas()
-            } 
+            }
       }
 
-      botonCarro_mes=document.querySelector('.guardar_carro_mes')
-      inputCarro_mes=document.querySelector('.iCarro_mes')
-      botonMoto_mes=document.querySelector('.guardar_Moto_mes')
-      inputMoto_mes=document.querySelector('.iMoto_mes')
+      botonCarro_mes = document.querySelector('.guardar_carro')
+      inputCarro_mes = document.querySelector('.iCarro_mes')
+      botonMoto_mes = document.querySelector('.guardar_Moto')
+      inputMoto_mes = document.querySelector('.iMoto_mes')
 
       botonMoto_mes.addEventListener("click", moto_mes)
       botonCarro_mes.addEventListener("click", carro_mes)
-      let MostarPrecio_mes=await leerPrecio()
-     let tarifas_mes=document.querySelector('.containertarifas_mes')
-     tarifas_mes.innerHTML=`<h3>Precio actual mes:</h3>
-     <h3>carro: ${MostarPrecio_mes.body[2].carro}</h3>
-     <h3>moto: ${MostarPrecio_mes.body[2].moto}</h3>`
-      async function carro_mes(){
-            if(inputCarro_mes.value !='' &&  !isNaN(inputCarro_mes.value)){
-                  let datosPrecio_mes=await leerPrecio()
-                  
-               await precio('63eb5ea5197365e272f55725', {
-                        carro:inputCarro_mes.value,
-                        moto:datosPrecio_mes.body[2].moto
+      let MostarPrecio_mes = await leerPrecio()
+      let tarifas_mes = document.querySelector('.containertarifas_mes')
+      tarifas_mes.innerHTML = `<h3>TARIFAS CARRO:</h3>
+     <h4>HORA CARRO: ${MostarPrecio_mes.body[2].carro}</h4>
+     <h4>DIA CARRO: ${MostarPrecio_mes.body[2].moto}</h4>
+     <h4>MES CARRO: ${MostarPrecio_mes.body[2].moto}</h4>`
+      async function carro_mes() {
+            if (inputCarro_mes.value != '' && !isNaN(inputCarro_mes.value)) {
+                  let datosPrecio_mes = await leerPrecio()
+
+                  await precio('63eb5ea5197365e272f55725', {
+                        carro: inputCarro_mes.value,
+                        moto: datosPrecio_mes.body[2].moto
                   })
-                  localStorage.setItem("carro",inputCarro_mes.value)
+                  localStorage.setItem("carro", inputCarro_mes.value)
                   formularioTarifas()
             }
       }
-      async function moto_mes(){
-            if(inputMoto_mes.value !=''  &&  !isNaN(inputMoto_mes.value)){
-                  let datosPrecio_mes=await leerPrecio()
-                await  precio('63eb5ea5197365e272f55725', {
-                        moto:inputMoto_mes.value,
-                        carro:datosPrecio_mes.body[2].carro
+      async function moto_mes() {
+            if (inputMoto_mes.value != '' && !isNaN(inputMoto_mes.value)) {
+                  let datosPrecio_mes = await leerPrecio()
+                  await precio('63eb5ea5197365e272f55725', {
+                        moto: inputMoto_mes.value,
+                        carro: datosPrecio_mes.body[2].carro
                   })
-                  localStorage.setItem("moto",inputMoto_mes.value)
+                  localStorage.setItem("moto", inputMoto_mes.value)
                   formularioTarifas()
-            } 
+            }
       }
 
 
-     
+
 }
 
 
@@ -136,7 +149,7 @@ function formularioUsuarios() {
       let variableError = `      
       <div id="container">
             <form>               
-                  <h2> Menu usuarios </h2>
+                  <h1> USUARIOS </h1>
                   <button class="boton_crear">Crear Usuario</button>
                   <button class="boton_editar">Editar Usuario</button>
                   <button class="boton_eliminar">Eliminar Usuario</button> 
@@ -165,7 +178,7 @@ function formularioUsuarios() {
       const boton_eliminar = document.querySelector(".boton_eliminar");
       boton_crear.addEventListener("click", formularioCrear);
       boton_crear.addEventListener("click", lectura);
-      boton_editar.addEventListener("click",editar_usuario)
+      boton_editar.addEventListener("click", editar_usuario)
       boton_eliminar.addEventListener("click", eliminar)
 }
 link_usuarios.addEventListener("click", formularioUsuarios)
@@ -195,37 +208,37 @@ function formularioCrear() {
        `
       div.innerHTML = variableError;            // metemos el mensaje al div que creamos
       container.appendChild(div);
-      
 
-      
+
+
       const boton_editar = document.querySelector(".boton_editar");
       const boton_eliminar = document.querySelector(".boton_eliminar");
       const containercrear = document.querySelector(".containercrear");
-      
-      
+
+
       const boton_ingresar = document.querySelector(".boton_ingresar");
       //
-     // boton_editar.addEventListener("click", lectura);
+      // boton_editar.addEventListener("click", lectura);
       boton_ingresar.addEventListener("click", agregarUsuario);
 }
 async function agregarUsuario() {
-            const input_nombre = document.querySelector(".input_nombre");
-            const input_correo = document.querySelector(".input_correo");
-            const input_contrasena = document.querySelector(".input_contraseña");
-            let nombre = input_nombre.value;
-            let correo = input_correo.value;
-            let contraseña = input_contrasena.value;
-      
-            const mandarTodo = await agregar(
-                  {
-                        name: `${nombre}`,
-                        email: `${correo}`,
-                        password: `${contraseña}`,
-                        estado:'activo'
-      
-                  })
-                  
-         
+      const input_nombre = document.querySelector(".input_nombre");
+      const input_correo = document.querySelector(".input_correo");
+      const input_contrasena = document.querySelector(".input_contraseña");
+      let nombre = input_nombre.value;
+      let correo = input_correo.value;
+      let contraseña = input_contrasena.value;
+
+      const mandarTodo = await agregar(
+            {
+                  name: `${nombre}`,
+                  email: `${correo}`,
+                  password: `${contraseña}`,
+                  estado: 'activo'
+
+            })
+
+
       const div = document.createElement("DIV") // crea un div en memoria 
       container.innerHTML = ` `;
       container.appendChild(div);
@@ -235,12 +248,12 @@ async function agregarUsuario() {
       div.innerHTML = variableError;            // metemos el mensaje al div que creamos
       container.appendChild(div);
 
-      }
+}
 
-      async function editar_usuario() {
-            const objeto = await leer()
-        
-         tabla.innerHTML=`<h4>editar</h4>
+async function editar_usuario() {
+      const objeto = await leer()
+
+      tabla.innerHTML = `<h4>editar</h4>
          <tr>
          <th>Id</th>
          <th>Nombre</th>
@@ -249,22 +262,22 @@ async function agregarUsuario() {
          <th>Estado</th>
          <th>Enviar</th>
       </tr>`
-      
-      let a=[];
-      let b=[];
-      let c=[];
-      let d=[];
-      let e=[];
-      let identi=[];
-      
-            for (let i = 0; i < objeto.body.length; i++) {
-                  //recorro el objeto que me entrego la consulta 
-                  // creo un elemento HTML y lo asigno a una variable
-                  const div = document.createElement('TR');
-                 div.setAttribute("id",`${objeto.body[i]._id}`)
-                 //<tr id=>
-                 
-                  const sql = `    
+
+      let a = [];
+      let b = [];
+      let c = [];
+      let d = [];
+      let e = [];
+      let identi = [];
+
+      for (let i = 0; i < objeto.body.length; i++) {
+            //recorro el objeto que me entrego la consulta 
+            // creo un elemento HTML y lo asigno a una variable
+            const div = document.createElement('TR');
+            div.setAttribute("id", `${objeto.body[i]._id}`)
+            //<tr id=>
+
+            const sql = `    
                   
       
                   <td>${objeto.body[i]._id}</td>
@@ -274,74 +287,74 @@ async function agregarUsuario() {
                   <td id="${objeto.body[i].estado}" >${objeto.body[i].estado} </td>
                   <td id=${i}><input class=editar type='checkbox' name='radio'></td>
                         `
-                  // creo una variable donde se va a guardar  el resultado de la consulta sql
-                  div.innerHTML = sql;
-                  tabla.appendChild(div);
-                 
-                   a[i]=`${objeto.body[i]._id}`
-                   b[i]=`${objeto.body[i].name}`
-                   c[i]=`${objeto.body[i].email}`
-                   d[i]=`${objeto.body[i].password}`
-                   e[i]=`${objeto.body[i].estado}`
-                   identi[i]=i
-              
-                  
-               
-            }
-          // 
-         tabla.setAttribute("contentEditable","true")
-      
-            a.forEach(list=> {
-                let datoscon=document.getElementById(list)
-          
-               datoscon.addEventListener("click", (e)=>{
-                 // datoscon.setAttribute("contentEditable","true")
-                 let start=datoscon.textContent.trimStart() 
-              
-                 let cadena=start.split("  ")
-                 let cadenaSin=[]
-                
-                for(let i=0; i<cadena.length; i++){
-                  if(cadena[i]!==''  && cadena[i] !=='\n'){
-      
-                     cadenaSin.push(cadena[i])
-                  }
-                } 
-         
-      
-             nuevaCadena=[]
-                cadenaSin.forEach(cadena=>{
-                 let finali= cadena.replace('\n', '')
-                 nuevaCadena.push(finali)
-                
-                })
-               
-             
-                 identi.forEach(id=>{
-                  let enviarCheck=document.getElementById(id)
-                  enviarCheck.addEventListener("click", (e)=>{
-                      let ok=e.target.value;
-                      if(ok=='on' && nuevaCadena !==''){
-                        agregarUnDato(nuevaCadena[0],{
-                              name:`${nuevaCadena[1]}`,
-                              email:`${nuevaCadena[2]}`,
-                              password:`${nuevaCadena[3]}`,
-                              estado:`${nuevaCadena[4]}`,
-                        }) 
-                      }
-                  })
-               
-                 })
-               })
-            });
-            
-      
+            // creo una variable donde se va a guardar  el resultado de la consulta sql
+            div.innerHTML = sql;
+            tabla.appendChild(div);
+
+            a[i] = `${objeto.body[i]._id}`
+            b[i] = `${objeto.body[i].name}`
+            c[i] = `${objeto.body[i].email}`
+            d[i] = `${objeto.body[i].password}`
+            e[i] = `${objeto.body[i].estado}`
+            identi[i] = i
+
+
+
       }
-      
-async function eliminar(){
+      // 
+      tabla.setAttribute("contentEditable", "true")
+
+      a.forEach(list => {
+            let datoscon = document.getElementById(list)
+
+            datoscon.addEventListener("click", (e) => {
+                  // datoscon.setAttribute("contentEditable","true")
+                  let start = datoscon.textContent.trimStart()
+
+                  let cadena = start.split("  ")
+                  let cadenaSin = []
+
+                  for (let i = 0; i < cadena.length; i++) {
+                        if (cadena[i] !== '' && cadena[i] !== '\n') {
+
+                              cadenaSin.push(cadena[i])
+                        }
+                  }
+
+
+                  nuevaCadena = []
+                  cadenaSin.forEach(cadena => {
+                        let finali = cadena.replace('\n', '')
+                        nuevaCadena.push(finali)
+
+                  })
+
+
+                  identi.forEach(id => {
+                        let enviarCheck = document.getElementById(id)
+                        enviarCheck.addEventListener("click", (e) => {
+                              let ok = e.target.value;
+                              if (ok == 'on' && nuevaCadena !== '') {
+                                    agregarUnDato(nuevaCadena[0], {
+                                          name: `${nuevaCadena[1]}`,
+                                          email: `${nuevaCadena[2]}`,
+                                          password: `${nuevaCadena[3]}`,
+                                          estado: `${nuevaCadena[4]}`,
+                                    })
+                              }
+                        })
+
+                  })
+            })
+      });
+
+
+}
+
+async function eliminar() {
       const objeto = await leer()
-   
-   tabla.innerHTML=`<h4>click en la colunma hasta que seleccione, luego click en id para eliminar </h4>
+
+      tabla.innerHTML = `<h4>click en la colunma hasta que seleccione, luego click en id para eliminar </h4>
    <tr>
   <!-- <th>check</th>  -->
    <th>Id</th>
@@ -352,21 +365,21 @@ async function eliminar(){
 
 </tr>`
 
-let a=[];
-let b=[];
-let c=[];
-let d=[];
-let e=[];
-let identi=[];
+      let a = [];
+      let b = [];
+      let c = [];
+      let d = [];
+      let e = [];
+      let identi = [];
 
       for (let i = 0; i < objeto.body.length; i++) {
             //recorro el objeto que me entrego la consulta 
             // creo un elemento HTML y lo asigno a una variable
             const div = document.createElement('TR');
-         //   tabla.innerHTML=''
-           div.setAttribute("id",`${i}`)
-           //<tr id=>
-           
+            //   tabla.innerHTML=''
+            div.setAttribute("id", `${i}`)
+            //<tr id=>
+
             const sql = `    
            <!-- <td><input id="${objeto.body[i]._id}+z" class=editar type='checkbox' name='radio'></td> -->
             <td id="${objeto.body[i]._id}">${objeto.body[i]._id}</td>
@@ -379,61 +392,61 @@ let identi=[];
             // creo una variable donde se va a guardar  el resultado de la consulta sql
             div.innerHTML = sql;
             tabla.appendChild(div);
-           
-             a[i]=`${objeto.body[i]._id}`
-             b[i]=`${objeto.body[i]._id}+z`
-             c[i]=`${objeto.body[i].email}`
-             d[i]=`${objeto.body[i].password}`
-             e[i]=`${objeto.body[i].estado}`
-             identi[i]=i
+
+            a[i] = `${objeto.body[i]._id}`
+            b[i] = `${objeto.body[i]._id}+z`
+            c[i] = `${objeto.body[i].email}`
+            d[i] = `${objeto.body[i].password}`
+            e[i] = `${objeto.body[i].estado}`
+            identi[i] = i
       }
-     let columna = true;
+      let columna = true;
       let resalto;
-      identi.forEach( list => {
+      identi.forEach(list => {
             let datos = document.getElementById(list)
-         
-            datos.addEventListener("click",()=>{
-                  columna=!columna
-            if(columna == true){
-                  datos.setAttribute("class","color") 
-                  resalto=true
-                 
-                 
-            }
-            if(columna === false){
-                  datos.setAttribute("class","vacio") 
-                  resalto=false
-            }
+
+            datos.addEventListener("click", () => {
+                  columna = !columna
+                  if (columna == true) {
+                        datos.setAttribute("class", "color")
+                        resalto = true
+
+
+                  }
+                  if (columna === false) {
+                        datos.setAttribute("class", "vacio")
+                        resalto = false
+                  }
 
             })
       })
-     a.forEach(  list=> {
-            let datoscon=document.getElementById(list)
-      
-           datoscon.addEventListener("click",deleteOne)
-           
-  
-})
+      a.forEach(list => {
+            let datoscon = document.getElementById(list)
+
+            datoscon.addEventListener("click", deleteOne)
 
 
-async function deleteOne(e){
-      // datoscon.setAttribute("contentEditable","true")
-   
-  
-  
-    let id=e.target
-    let dato = id.innerHTML
-     
-      if(resalto==true){
-          let confirmacion=  confirm("¿Deseas elimnar el usuario?")
-          if(confirmacion==true){
-          await borrar(dato)
-           tabla.innerHTML=''
-          await eliminar()
-          }
-          
+      })
+
+
+      async function deleteOne(e) {
+            // datoscon.setAttribute("contentEditable","true")
+
+
+
+            let id = e.target
+            let dato = id.innerHTML
+
+            if (resalto == true) {
+                  let confirmacion = confirm("¿Deseas elimnar el usuario?")
+                  if (confirmacion == true) {
+                        await borrar(dato)
+                        tabla.innerHTML = ''
+                        await eliminar()
+                  }
+
+            }
       }
-}
 
 }
 
@@ -447,7 +460,7 @@ function formularioImpresoras() {
       
       <div id="container">
                            
-             <h2> Menu Impresoras: </h2>
+             <h1> IMPRESORAS </h1>
             <form>
             <h3>Seleccione Impresora:</h3>
             <select> 
@@ -479,7 +492,7 @@ async function infoFactura() {
       margin-left:180px;
 }
       </style>
-      <h2> Informacion Parqueadero </h2>
+      <h1> INFO PARQUEADERO </h1>
       <label>Nombre:</label>
       <input type="text" class="nombre">
       <label>Nit:</label>
@@ -499,63 +512,63 @@ async function infoFactura() {
       
       
       `
- 
+
       div.innerHTML = variableError;            // metemos el mensaje al div que creamos
       container.appendChild(div);
 
-     const imagen = document.querySelector('.imagen')
-      const guardar= document.querySelector('.guardar')
-      const nombre= document.querySelector('.nombre')
-      const nit= document.querySelector('.nit')
-      const direccion= document.querySelector('.direccion')
-      const telefono= document.querySelector('.telefono')
-      const capacidadC= document.querySelector('.capacidadC')
-      const capacidadM= document.querySelector('.capacidadM')
-   
-     let datos=  await  leerPrecio() 
-   
-   
+      const imagen = document.querySelector('.imagen')
+      const guardar = document.querySelector('.guardar')
+      const nombre = document.querySelector('.nombre')
+      const nit = document.querySelector('.nit')
+      const direccion = document.querySelector('.direccion')
+      const telefono = document.querySelector('.telefono')
+      const capacidadC = document.querySelector('.capacidadC')
+      const capacidadM = document.querySelector('.capacidadM')
+
+      let datos = await leerPrecio()
+
+
       guardar.addEventListener("click", aggdatos)
 
-            async function aggdatos(){
-             
-                  let nombre1= nombre.value;
-                  let nit1=nit.value;
-                  let direccion1=direccion.value;
-                  let telefono1=telefono.value;
-                  let capacidadC1=capacidadC.value;
-                  let capacidadM1=capacidadM.value;
-       
-                  console.log(nombre1,nit1,direccion1,telefono1,capacidadC1,capacidadM1)
-                   const reader = new FileReader();
-                   reader.readAsDataURL(imagen.files[0]);
-                   reader.addEventListener("load",async (e)=>{
+      async function aggdatos() {
+
+            let nombre1 = nombre.value;
+            let nit1 = nit.value;
+            let direccion1 = direccion.value;
+            let telefono1 = telefono.value;
+            let capacidadC1 = capacidadC.value;
+            let capacidadM1 = capacidadM.value;
+
+            console.log(nombre1, nit1, direccion1, telefono1, capacidadC1, capacidadM1)
+            const reader = new FileReader();
+            reader.readAsDataURL(imagen.files[0]);
+            reader.addEventListener("load", async (e) => {
                   let img = e.currentTarget.result;
-                  localStorage.setItem("foto",img)
-                  localStorage.setItem("direccion",direccion1)
-                  localStorage.setItem("telefono",telefono1)
-                  localStorage.setItem("nit",nit1)
-              
-                 await precio("63eae3f325b8cb0812bb7a2b",{
+                  localStorage.setItem("foto", img)
+                  localStorage.setItem("direccion", direccion1)
+                  localStorage.setItem("telefono", telefono1)
+                  localStorage.setItem("nit", nit1)
+
+                  await precio("63eae3f325b8cb0812bb7a2b", {
                         nombre: `${nombre1}`,
                         nit: `${nit1}`,
-                        direccion:` ${direccion1}`,
-                        telefono: `${telefono1}`,  
-                        capacidadC:`${capacidadC1}`,
-                        capacidadM:`${capacidadM1}`,
-                        carro:`${img}`
+                        direccion: ` ${direccion1}`,
+                        telefono: `${telefono1}`,
+                        capacidadC: `${capacidadC1}`,
+                        capacidadM: `${capacidadM1}`,
+                        carro: `${img}`
                   })
 
                   location.reload()
 
-                   })
-            }
+            })
+      }
 
 
- }
+}
 
-   
-      
+
+
 
 link_factura.addEventListener("click", infoFactura)
 
@@ -573,7 +586,7 @@ async function leer() {
             method: 'GET'
       });
       const data = await response.json();
-    
+
       return data
 }
 
@@ -582,13 +595,13 @@ async function leerPrecio() {
             method: 'GET'
       });
       const data = await response.json();
-   
+
       return data
 }
 
 async function lectura() {
       const objeto = await leer()
-     
+
       // containercrear.innerHTML = ` `;
       for (let i = 0; i < objeto.body.length; i++) {
             //recorro el objeto que me entrego la consulta 
@@ -606,7 +619,7 @@ async function lectura() {
             div.innerHTML = sql;
             tabla.appendChild(div);
       }
-     
+
 }
 
 
@@ -629,41 +642,41 @@ async function agregar(datos) {
 
 async function agregarUnDato(id, datos) {
       await fetch(`${url}/${id}`, {
-    
-        method: 'PATCH', // or 'PUT'
-        body: JSON.stringify(datos), // data can be `string` or {object}!
-        headers: {
-          'Content-Type': 'application/json'
-        }
+
+            method: 'PATCH', // or 'PUT'
+            body: JSON.stringify(datos), // data can be `string` or {object}!
+            headers: {
+                  'Content-Type': 'application/json'
+            }
       }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('añadido correctamente'));
-    
-    }
-    
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('añadido correctamente'));
+
+}
+
 async function precio(id, datos) {
       await fetch(`${url2}/${id}`, {
-    
-        method: 'PATCH', // or 'PUT'
-        body: JSON.stringify(datos), // data can be `string` or {object}!
-        headers: {
-          'Content-Type': 'application/json'
-        }
+
+            method: 'PATCH', // or 'PUT'
+            body: JSON.stringify(datos), // data can be `string` or {object}!
+            headers: {
+                  'Content-Type': 'application/json'
+            }
       }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('añadido correctamente'));
-    
-    }
-    
-    async function borrar(id) {
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('añadido correctamente'));
+
+}
+
+async function borrar(id) {
       const response = await fetch(`${url}/${id}`, {
-        method: 'DELETE',
+            method: 'DELETE',
       });
       const data = await response.json();
-    
+
       return data;
-    }
-    
+}
+
 
 
 

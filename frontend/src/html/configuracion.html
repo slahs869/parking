@@ -64,29 +64,45 @@ let img=localStorage.getItem("foto")
 	<div class="container1" id="div_resumen">
 
 		<div id="container2">
-			<h2>  MENU TARIFAS </h2> 
+			<h1> PLAN DE TARIFAS </h1> 
 
-          <h2> Valor Hora</h2> 
-          <h3>AUTOMOVIL:</h3>
-          <input type="text" class="iCarro"> 
-          <button id="boton_guardar" class="guardar_carro ">Guardar</button>
+		<div id="div_tarifa">
+          <h2> MOTOS: </h2> 
+          <h3>HORA:</h3>
+		  <input type="text" class="iMoto">
+          <h3>DIA:</h3>
+		  <input type="text" class="iMoto_dia"> 
+		  <h3>MES:</h3>
+		  <input type="text" class="iMoto_mes">
+		  <button id="boton_guardar" class="guardar_Moto ">Guardar</button>
           
-          <h3>MOTO: </h3>
-          <input type="text" class="input_tarifa iMoto">
-          <button id="boton_guardar" class="guardar_Moto ">Guardar</button>
-          <h2> Valor Mes</h2> 
-          <h3>AUTOMOVIL:</h3>
-          <input type="text" class="iCarro_mes">
-          <button id="boton_guardar" class="guardar_carro_mes ">Guardar</button>
           
-          <h3>MOTO: </h3>
-          <input type="text" class="input_tarifa iMoto_mes">
-          <button id="boton_guardar" class="guardar_Moto_mes ">Guardar</button>
+          
+
+		  </div>
+		  <div id="div_tarifa">
+			<h2>CARROS: </h2>
+			
+          <h3> HORA:</h3> 
+		  <input type="text" class="iCarro"> 
+		  <h3>DIA:</h3>        
+          <input type="text" class="iCarro_dia">
+		
+          
+          <h3>MES: </h3>
+		  <input type="text" class="iCarro_mes">
+		  <button id="boton_guardar" class="guardar_carro ">Guardar</button>
+          
+          
       <div class="iCarro">
-		</div> 	  
+		</div>
+		</div> 
+		<div class="containertarifas" id="containertarifas">
+    </div> 
+    <div class="containertarifas_mes" id="containertarifas_mes">
+    </div> 	  
 	</div>
 `
-
 const cargar=document.querySelector(".cargar")
 
 try{
@@ -119,6 +135,93 @@ try{
 }
 
 
+async function formularioTarifas() {
+	botonMoto = document.querySelector('.guardar_Moto');
+	botonCarro = document.querySelector('.guardar_carro')
+
+	botonMoto.addEventListener("click", moto)
+      botonCarro.addEventListener("click", carro)
+      let MostarPrecio = await leerPrecio()
+      let tarifas = document.querySelector('.containertarifas')
+      tarifas.innerHTML = `<h3>TARIFAS MOTO:</h3>
+     <h4>HORA MOTO: ${MostarPrecio.body[0].carro}</h4>
+     <h4>DIA MOTO: ${MostarPrecio.body[0].moto}</h4>
+     <h4>MES MOTO: ${MostarPrecio.body[0].moto}</h4>`
+
+
+      async function carro() {
+            if (inputCarro.value != '' && !isNaN(inputCarro.value)) {
+                  let datosPrecio = await leerPrecio()
+
+                  await precio('63e183f27dda95ae0da4ebcd', {
+                        carro: inputCarro.value,
+                        moto: datosPrecio.body[0].moto
+                  })
+                  localStorage.setItem("carro", inputCarro.value)
+                  formularioTarifas()
+            }
+      }
+      async function moto() {
+            if (inputMoto.value != '' && !isNaN(inputMoto.value)) {
+                  let datosPrecio = await leerPrecio()
+                  await precio('63e183f27dda95ae0da4ebcd', {
+                        moto: inputMoto.value,
+                        carro: datosPrecio.body[0].carro
+                  })
+                  localStorage.setItem("moto", inputMoto.value)
+                  formularioTarifas()
+            }
+      }
+
+      botonCarro_mes = document.querySelector('.guardar_carro')
+      inputCarro_mes = document.querySelector('.iCarro_mes')
+      botonMoto_mes = document.querySelector('.guardar_Moto')
+      inputMoto_mes = document.querySelector('.iMoto_mes')
+
+      botonMoto_mes.addEventListener("click", moto_mes)
+      botonCarro_mes.addEventListener("click", carro_mes)
+      let MostarPrecio_mes = await leerPrecio()
+      let tarifas_mes = document.querySelector('.containertarifas_mes')
+      tarifas_mes.innerHTML = `<h3>TARIFAS CARRO:</h3>
+     <h4>HORA CARRO: ${MostarPrecio_mes.body[2].carro}</h4>
+     <h4>DIA CARRO: ${MostarPrecio_mes.body[2].moto}</h4>
+     <h4>MES CARRO: ${MostarPrecio_mes.body[2].moto}</h4>`
+      async function carro_mes() {
+            if (inputCarro_mes.value != '' && !isNaN(inputCarro_mes.value)) {
+                  let datosPrecio_mes = await leerPrecio()
+
+                  await precio('63eb5ea5197365e272f55725', {
+                        carro: inputCarro_mes.value,
+                        moto: datosPrecio_mes.body[2].moto
+                  })
+                  localStorage.setItem("carro", inputCarro_mes.value)
+                  formularioTarifas()
+            }
+      }
+      async function moto_mes() {
+            if (inputMoto_mes.value != '' && !isNaN(inputMoto_mes.value)) {
+                  let datosPrecio_mes = await leerPrecio()
+                  await precio('63eb5ea5197365e272f55725', {
+                        moto: inputMoto_mes.value,
+                        carro: datosPrecio_mes.body[2].carro
+                  })
+                  localStorage.setItem("moto", inputMoto_mes.value)
+                  formularioTarifas()
+            }
+      }
+	  
+	}
+	formularioTarifas();
+
+	async function leerPrecio() {
+		const url2 = 'http://localhost:3000/price';
+      const response = await fetch(url2, {
+            method: 'GET'
+      });
+      const data = await response.json();
+
+      return data
+}
 
 	</script>
 	
