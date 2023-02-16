@@ -10,13 +10,26 @@
 
 <body>
 	<div class="cargar">
-
 	</div>
+	
 	<div class="container_login">
-
 	</div>
+	<div class="logo"></div>
+
+	<script>
+		let img = localStorage.getItem("foto")
 	
-	
+
+	let logo=`
+	<div><img src="${img}" class="logoempresa" id="logo"></div>
+`
+
+const logotipe=document.querySelector('.logo');
+const div=document.createElement('DIV');
+div.innerHTML=logo;
+logotipe.appendChild(div)
+
+let html = `
 	<div class="div_menu">
 		<ul>
 			<dt><a href="operaciones.html">Inicio</a></dt>
@@ -27,51 +40,14 @@
 		</ul>
 	</div>
 
+
 	<div id="div_titulo">
 		<label class="label_informes">INFORMES</label>
 	</div>
 
-	<script>
-		function startTime(){
-		today=new Date();
-		h=today.getHours();
-		m=today.getMinutes();
-		s=today.getSeconds();
-		m=checkTime(m);
-		s=checkTime(s);
-		
-		if(h<12){
-		
-			document.getElementById('reloj').innerHTML=h+":"+m+":"+s+" AM";
-		
-		
-		}else {
-			document.getElementById('reloj').innerHTML= h-12+":"+m+":"+s+" PM";
-		}
-		
-		
-		//document.getElementById('reloj').innerHTML=h+":"+m+":"+s;
-		t=setTimeout('startTime()',500);}
-		function checkTime(i)
-		{if (i<10) {i="0" + i;}return i;}
-		window.onload=function(){startTime();}
-		</script>
-		
-		<div id="reloj" ></div> 
+	<div id="reloj"></div>
 
-		<div class="foto"></div>
-
-	<script>
-		  let img=localStorage.getItem("foto")
-			let html=`<img  src="${img}" class="logoempresa"  id="logo">
-			</div>	<div>`
-				
-		let div = document.createElement("DIV");
-		const fotogra=document.querySelector('.foto')
-		div.innerHTML=html;
-		fotogra.appendChild(div)
-	
-		</script>
+	<div class="foto"></div>
 
 	<div id="div_imagen">
 		<img src="../img/moto.png" id="moto">
@@ -98,11 +74,9 @@
 		</div>
 	</div>
 
-	
-
-		<div id="tabla_busqueda">
-			<style>
-				#tabla_busqueda {
+	<div id="tabla_busqueda">
+		<style>
+			#tabla_busqueda {
 				border: 3px solid #000;
 				position: relative;
 				text-align: center;
@@ -114,48 +88,106 @@
 				width: 1150px;
 				height: 490px;
 				border-radius: 10px;
-				}
-				th {
-					width: 20%;
-					border: 2px solid #000;
-					box-sizing: content-box;
-					font-size: 30px;
-					padding: px;
-				}
+			}
 
-				td {
-					width: 22%;
-					border: 2px solid #000;
-					box-sizing: content-box;
-					font-weight: 30px;
-					font-size: 20px;
-				}
-			</style>
-			<table>
-				<tbody class="table" id="table"></tbody>
-				<tr>
-					<th>ID</th>
-					<th>placa</th>
-					<th>hora entrada</th>
-					<th>hora salida</th>
-					<th>valor pagado</th>
-					<th>Estado</th>
-				</tr>
+			th {
+				width: 20%;
+				border: 2px solid #000;
+				box-sizing: content-box;
+				font-size: 30px;
+				padding: px;
+			}
+
+			td {
+				width: 22%;
+				border: 2px solid #000;
+				box-sizing: content-box;
+				font-weight: 30px;
+				font-size: 20px;
+			}
+		</style>
+		<table>
+			<tbody class="table" id="table"></tbody>
+			<tr>
+				<th>ID</th>
+				<th>placa</th>
+				<th>hora entrada</th>
+				<th>hora salida</th>
+				<th>valor pagado</th>
+				<th>Estado</th>
+			</tr>
+
+			</tbody>
+		</table>
+	</div>
+	<div id="div_imprimir_informe">
+
+	</div>`
+
+	const cargar=document.querySelector(".cargar")
+	try{
+	let datos=window.localStorage.getItem("usuario")
+
+	const div=document.createElement("DIV")
+	if(datos !== null){
+		console.log(datos)
+		div.innerHTML=html
+		cargar.appendChild(div)
+			let dato = window.localStorage.getItem("usuario")
+			let dato1 = window.localStorage.getItem("email")			
+			let dato3 = window.localStorage.getItem("estado");
+			container= document.querySelector(".container_login");
+
+			container.innerHTML=`
 			
-</tbody>
-			</table>
-		</div>
-		<div id="div_imprimir_informe">
+			<label class="label1">Nombre: ${dato}</lablabel><br>
+			<label class="label1">email: ${dato1}</label><br>
+			<label class="label1">estado: ${dato3}</label>
+			<a href="./login.html"><button class="cerrar_seccion">Cerrar Sesion </button></a>`
+			cerrar=document.querySelector('.cerrar_seccion')
+			cerrar.addEventListener("click", ()=>{
+				localStorage.removeItem("email");
+				localStorage.removeItem("contraseña");
+				localStorage.removeItem("usuario");
+				localStorage.removeItem("activo");
+				
+			})
 
-		</div>
-
-		
+			
+			
+	}
+} catch(e){
+	console.log(e)
+}
+</script>
+<script>		
+	function startTime(){
+	today=new Date();
+	h=today.getHours();
+	m=today.getMinutes();
+	s=today.getSeconds();
+	m=checkTime(m);
+	s=checkTime(s);
 	
+	if(h<12){
+	
+		document.getElementById('reloj').innerHTML=h+":"+m+":"+s+" AM";
+	
+	
+	}else {
+		document.getElementById('reloj').innerHTML= h-12+":"+m+":"+s+" PM";
+	}
+	
+	
+	//document.getElementById('reloj').innerHTML=h+":"+m+":"+s;
+	t=setTimeout('startTime()',500);}
+	function checkTime(i)
+	{if (i<10) {i="0" + i;}return i;}
+	window.onload=function(){startTime();}
 	</script>
-	
-		
 
-		
+
+
 	<script src="../js/informes.js"></script>
 
 	<div class="container"></div>

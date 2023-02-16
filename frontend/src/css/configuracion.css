@@ -82,7 +82,9 @@ body {
     height: 120px;
     border: 1px solid;
     border-radius: 20px;
-	margin-left: 10px;
+	margin-left: 5px;
+	display: flex;
+	margin-top: 4px;
 }
 
 #div_menu {

@@ -1,6 +1,6 @@
 body {
     
-    background-color: #000;
+    
     
 }
 
@@ -171,6 +171,12 @@ display: flex;
 margin-left: 65px;
 
 }
+.cerrar_seccion {
+    margin-top: 15px;
+    width: 111px;
+    height: 43px;
+    margin-left: 64px;
+}
 
 #input_placa {
 font-style: bold;
@@ -328,8 +334,8 @@ th {
 width: 20%;
 border: 2px solid #000;   
 box-sizing: content-box;
-font-size: 30px;
-padding: px;
+font-size: 22px;
+
 
 }
 

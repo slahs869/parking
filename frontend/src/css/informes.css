@@ -17,17 +17,23 @@ body {
 	
 	text-align: center;
 }
+
 #logo {
 	display: flex;
 	position: absolute;
 	width: 230px;
 	height: 120px;
 	margin-left: 5px;
-	margin-top: -156px;
+	margin-top: -150px;
 	border: 1px solid;
 	border-radius: 20px;
 }
-
+.cerrar_seccion {
+    margin-top: -66px;
+    width: 111px;
+    height: 43px;
+    margin-left: 64px;
+}
 .container_login {
 
 
@@ -35,7 +41,7 @@ body {
     width: 230px;
     height: 120px;
     display: flex;
-    position: fixed;
+    
     margin-left: 1350px;
     border: 2px solid;
     border-radius: 10px;
@@ -62,7 +68,18 @@ body {
 	opacity: 0.6;
 	border-radius: 20px;
 }
+.cargar {
+	width: 10px;
+	height: 10px;
+}
+.cerrar_seccion{
 
+    margin-top: -66px;
+    width: 111px;
+    height: 43px;
+    margin-left: 64px;
+
+}
 #label_fecha {
 	font-size: 50px;
 	position: relative;
