@@ -18,7 +18,7 @@ async function formularioTarifas() {
                     
           <h2> Defina la tarifa para: </h2> 
 
-          <h2> Dia</h2> 
+          <h2> Valor Hora</h2> 
           <h3>AUTOMOVIL:</h3>
           <input type="text" class="iCarro"><br> 
           <button id="boton_guardar" class="guardar_carro ">Guardar</button>
@@ -26,7 +26,7 @@ async function formularioTarifas() {
           <h3>MOTO: </h3>
           <input type="text" class="input_tarifa iMoto">
           <button id="boton_guardar" class="guardar_Moto ">Guardar</button>
-          <h2> Mes</h2> 
+          <h2> Valor Mes</h2> 
           <h3>AUTOMOVIL:</h3>
           <input type="text" class="iCarro_mes"><br> 
           <button id="boton_guardar" class="guardar_carro_mes ">Guardar</button>
@@ -123,7 +123,7 @@ async function formularioTarifas() {
 
 
 
-link_tarifa.addEventListener("click", formularioTarifas)
+link_tarifa.addEventListener("click", formularioTarifas);
 
 //_______________________________________________________________________________________________________
 
@@ -151,7 +151,7 @@ function formularioUsuarios() {
 						<th>Nombre</th>
 						<th>Correo</th>
 						<th>Contraseña</th>
-						<th>Estado</th>
+						
 					</tr>	
 				</tbody>
 			</table>
@@ -600,7 +600,7 @@ async function lectura() {
             <td>${objeto.body[i].name}</td>
             <td>${objeto.body[i].email}</td>
             <td>${objeto.body[i].password}</td>
-            <td>${objeto.body[i].estado}</td>
+            
                   `
             // creo una variable donde se va a guardar  el resultado de la consulta sql
             div.innerHTML = sql;

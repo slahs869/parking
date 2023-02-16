@@ -56,54 +56,38 @@ let img=localStorage.getItem("foto")
 				<dt id="item_menu"><a href="#" class="link_tarifa" id="link_configuracion">Tarifas</a></dt>
 				<dt id="item_menu"><a href="#" class="link_usuarios" id="link_configuracion1">Usuarios</a></dt>
 				<dt id="item_menu"><a href="#" class="link_impresoras" id="link_configuracion2">Impresoras</a></dt>
-				<dt id="item_menu"><a href="#" class="link_factura" id="link_configuracion3">Factura</a></dt>
-				
+				<dt id="item_menu"><a href="#" class="link_factura" id="link_configuracion3">Factura</a></dt>				
 
 			</ul>
 		</nav>
-
 	</div>
-
-
 	<div class="container1" id="div_resumen">
 
 		<div id="container2">
-			<h2> Defina la tarifa para: </h2> 
+			<h2>  MENU TARIFAS </h2> 
 
-          <h2> Dia</h2> 
+          <h2> Valor Hora</h2> 
           <h3>AUTOMOVIL:</h3>
-          <input type="text" class="iCarro"><br> 
+          <input type="text" class="iCarro"> 
           <button id="boton_guardar" class="guardar_carro ">Guardar</button>
           
           <h3>MOTO: </h3>
           <input type="text" class="input_tarifa iMoto">
           <button id="boton_guardar" class="guardar_Moto ">Guardar</button>
-          <h2> Mes</h2> 
+          <h2> Valor Mes</h2> 
           <h3>AUTOMOVIL:</h3>
-          <input type="text" class="iCarro_mes"><br> 
+          <input type="text" class="iCarro_mes">
           <button id="boton_guardar" class="guardar_carro_mes ">Guardar</button>
           
           <h3>MOTO: </h3>
           <input type="text" class="input_tarifa iMoto_mes">
           <button id="boton_guardar" class="guardar_Moto_mes ">Guardar</button>
-      
-                    
-					
-					<div class="iCarro"><br> 
-					
-			  </div> 
-			  <div class="containertarifas" id="containertarifas">
-			  </div>    
-					
-				
-			  
+      <div class="iCarro">
+		</div> 	  
 	</div>
-
-        
 `
+
 const cargar=document.querySelector(".cargar")
-
-
 
 try{
 	let datos=window.localStorage.getItem("activo")
