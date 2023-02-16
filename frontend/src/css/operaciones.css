@@ -527,15 +527,16 @@ dt {
         
         
         #div_total {
-        background-color: rgb(255, 255, 255);
-        border: 2px solid;
-        width: 500px;
-        height: 150px;
-        margin-left: 603px;
-        margin-top: -110px;
-        border-radius: 20px;
-        font-size: 60px;
-        display: flex;
+            background-color: rgb(255, 255, 255);
+            border: 2px solid;
+            width: 500px;
+            height: 150px;
+            margin-left: 603px;
+            margin-top: 28px;
+            border-radius: 20px;
+            font-size: 60px;
+            display: flex;
+        }
         }
         
         
