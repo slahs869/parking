@@ -215,13 +215,15 @@ body {
 
 }
 .cerrar_seccion {
-	margin-top: -66px;
-    width: 111px;
-    height: 43px;
-    margin-left: 64px;
-    font-size: 16px;
-	
+	margin-top: -80px;
+    width: 75px;
+    height: 32px;
+    margin-left: 69px;
+    font-size: 11px;
+    padding-left: 23px;
+    padding-right: 55px;
 }
+	
 
 a {
 	font-size: 28px;
@@ -472,4 +474,8 @@ td {
 	padding-top: 0px;
 	position: relative;
 	margin-top: -145px;
+}
+
+.cambiaColor{
+	color: green;
 }
