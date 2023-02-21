@@ -566,7 +566,7 @@ async function infoFactura() {
                         telefono: `${telefono1}`,
                         capacidadC: `${capacidadC1}`,
                         capacidadM: `${capacidadM1}`,
-                        carro: `${img}`
+                        carro: `hola`
                   })
 
                   location.reload()
